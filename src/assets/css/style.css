@@ -1,0 +1,1950 @@
+.fs8{
+    font-size:8px;
+}
+.fs10{
+    font-size:10px;
+}
+.fs11{
+    font-size:11px;
+}
+.fs12{
+    font-size:12px;
+}
+.fs13{
+    font-size:13px;
+}
+.fs14{
+    font-size:14px;
+}
+.fs15{
+    font-size:15px;
+}
+.fs16{
+    font-size:16px;
+}
+.fs17{
+    font-size:17px;
+}
+.fs18{
+    font-size:18px;
+}
+.fs19{
+    font-size:19px;
+}
+.fs20{
+    font-size:20px;
+}
+.fs21{
+    font-size:21px;
+}
+.fs22{
+    font-size:22px;
+}
+.fs23{
+    font-size:23px;
+}
+.fs24{
+    font-size:24px;
+}
+.fs25{
+    font-size:25px;
+}
+
+/* border color */
+.clr-1{
+    color: #eaedf3;
+}
+
+/* link hover/active */
+.clr-2{
+    color: #3333ff;
+}
+
+/* light text color */
+.clr-3{
+    color: #999999!important;
+}
+
+.bg-white{
+    background: #fff;
+}
+
+.btn-1{
+    background-color: #34AA44;
+    color:#fff!important;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 7px;
+	border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 18px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #EAEDF3;
+    font-weight: 500;
+    padding: 0 7px;
+    height: 24px;
+}
+
+.btn-1:hover{
+	background-color:#34AA44;/* buraya butonun renginin koyu versiyonuu koyarsınzı hocam */
+}
+
+.btn-2{
+    background-color: #FACF55;
+    color:#fff!important;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 7px;
+	border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 18px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #EAEDF3;
+    font-weight: 500;
+    padding: 0 7px;
+    height: 24px;
+}
+
+.btn-3{
+    background-color: #1665D8;
+    color:#fff!important;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    border-radius: 7px;
+border-radius: 4px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 18px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #EAEDF3;
+    font-weight: 500;
+    padding: 0 7px;
+    height: 24px;
+}
+
+.btn-4{
+    background-color:#1D6DE1;
+    color:#fff!important;
+    padding: 10px;
+    float: left;
+}
+
+.btn-5{
+    background-color:#F9FAFB;
+    color:#333333!important;
+    border: 1px solid #999999;
+    padding: 10px 0;
+    float: left;
+}
+
+.btn-default{
+    border: 1px solid #999999;
+}
+
+@media (max-width: 1480px){
+    .btn-4{
+        font-size: 13px;
+    }
+
+    .btn-5{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1380px){
+    .btn-primary{
+        font-size: 12px;
+    }
+
+    .btn-default{
+        font-size: 12px;
+    }
+}
+
+
+
+.btn{
+    margin-right: 5px;
+    margin-top: 10px;
+}
+/*
+.btn{
+    margin-right: 5px;
+    margin-top: 10px;
+    height: 38px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+*/
+
+body#mth{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+
+/* ICONS */
+
+
+
+/* Navbar Start */
+
+.navbar{
+    min-height:100px;
+    border-bottom:1px solid #eaedf3;
+    background: #fff;
+}
+
+.navbar-brand{
+    padding-right:15px;
+    border-right:1px solid #eaedf3;
+}
+.navbar .navbar-nav li a{
+    color: #333333!important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+}
+.navbar .navbar-nav li a:hover{
+    color: #3333ff!important;
+}
+
+.navbar .navbar-nav li .active{
+    color: #3333ff!important;
+}
+
+/* Navbar End */
+
+/* Header Start */
+
+.header .collapser{
+    font-size: 25px;
+    padding: 20px;
+    color:lightgray!important;
+}
+
+.header .social-links{
+    margin-top: 20px;
+    padding-right: 75px;
+}
+.header .social-links .collapser{
+    color:black!important;
+}
+
+.header .social-links .collapser:hover{
+    text-decoration: none;
+}
+
+/* Header End */
+
+
+/* section "content" start */
+
+.content p{
+    font-weight: 300;
+    font-size: 14px;
+    color:#666666;
+    margin-top:10px;
+    margin-bottom: 0;
+}
+
+.content .page-content{
+    padding: 3rem;
+}
+
+.content .page-wrapper{
+    margin:2rem;
+    border: 1px solid #eaedf3;
+    background: #fff;
+}
+
+.content .tab-title{
+    font-weight: 400;
+    font-size: 14px;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eaedf3;
+
+}
+
+/* section "content" end */
+
+
+/* Hakkinda Page Start */
+
+#hakkinda td{
+    padding-top: 10px;
+}
+
+.page-content .contact-info{
+    font-size: 14px;
+    font-weight: 300;
+    list-style: none;
+    display: inline-block;
+}
+.page-content .contact-info{
+    display: inline;
+    margin-bottom: 20px;
+}
+
+.page-content .contact-info li{
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.page-content .contact-info i{
+    margin-right: 20px;
+    color:gray;
+    width: 14px;
+}
+
+.content-nav{
+    border-bottom:1px solid #eaedf3;
+}
+
+.content-nav .nav-link{
+    border:none;
+    color:#6b6c6f;
+    font-size: 14px;
+}
+
+.content-nav .nav-link > span{
+    font-weight: 300;
+}
+
+.content-nav .nav-link.active{
+    border:none;
+    border-bottom:2px solid #1665D8;
+    font-weight: 500;
+}
+
+/* Hakkinda Page End */
+
+
+/* Portfoy Start */
+
+.portfoy-item {
+    margin-bottom: 20px;
+}
+
+.portfoy-item img{
+    width: 100%;
+}
+
+/* Portfoy End */
+
+/* Custom Checkbox Start */
+
+.form-check{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.form-check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #35AB45;
+    border-radius: 7px;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.form-check input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.form-check .checkmark:after {
+    left: 8px;
+    top: 5px;
+    width: 8px;
+    height: 15px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* Custom Checkbox End */
+
+
+/* Carousel Start */
+.owl-dots{
+    text-align: center;
+    margin-bottom: -50px;
+    position: relative;
+    bottom:50px;
+}
+.owl-dots button{
+    width:70px;
+    height: 8px;
+    background: rgba(0,0,0,0.5)!important;
+    margin-right: 5px
+}
+
+.owl-dots button.active{
+    background: #fff!important;
+}
+
+/* Carousel End */
+
+
+/* Gelismeler Start */
+
+
+.paylasimlar-container{
+    border: 1px solid #eaedf3;
+    padding: 30px;
+}
+
+.paylasimlar-container textarea{
+    width: 100%;
+    overflow-y:hidden;
+    resize: none;
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 10px 5px;
+    /*
+    background: white no-repeat;
+    background-image: linear-gradient(to bottom, #1abc9c, #1abc9c), linear-gradient(to bottom, silver, silver);
+    background-size: 0 2px, 100% 1px;
+    background-position: 50% 100%, 50% 100%;
+    transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+    */
+
+
+}
+
+
+.paylasimlar-container textarea:focus{
+    background-size: 100% 2px, 100% 1px;
+    outline: none;
+}
+
+.paylasimlar-container textarea::placeholder{
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+.paylasimlar-container h3{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.container {
+  max-width: 1024px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.timeline-item {
+  padding: 0em 2em 2em;
+  position: relative;
+  color: rgba(0, 0, 0, 0.7);
+  border-left: 2px solid #eaedf3;
+  width: 100%;
+}
+
+.timeline-item ul{
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.timeline-item .collapser{
+    font-size: 20px;
+    color: #9EA0A5!important;
+}
+
+.timeline-item p.time{
+    margin:0;
+    padding: 0;
+    font-size: 15px;
+    color: lightgray;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaedf3;
+}
+
+.timeline-item:last-child p.time{
+    border:none;
+}
+
+.timeline-item p {
+  font-size: 1rem;
+}
+
+.timeline-item::after {
+  width: 10px;
+  height: 10px;
+  display: block;
+  top: 1em;
+  position: absolute;
+  left: -6px;
+  border-radius: 10px;
+  content: '';
+  border: 1px solid #eaedf3;
+  background: #3BAD4B;
+}
+
+/* Gelismeler End*/
+
+
+
+
+/* Finansman Start*/
+
+.finansman .widget{
+    position: relative;
+    border-radius: 5px;
+    padding: 30px 30px;
+    color:#fff;
+    min-height: 100px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.finansman .widget .icon{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    text-align: right;
+    padding-right: 20px;
+    margin-top: -55px;
+}
+.finansman .widget i{
+    font-size: 100px;
+    color: rgba(255,255,255,0.5);
+}
+
+.widget1{
+    background: #1665D8;
+}
+
+.widget2{
+    background: #34AA44;
+}
+
+.widget3{
+    background: #F6AB2E;
+}
+
+.widget4{
+    background: #6758F3;
+}
+
+
+.finansman .table thead th{
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    text-transform: uppercase;
+    color:#ABACB1;
+    font-weight: 400;
+}
+
+.finansman .table thead th:last-child{
+    border-right: 1px solid #dee2e6;
+}
+
+.finansman .table thead th:first-child{
+    border-left: 1px solid #dee2e6;
+}
+
+.finansman .table tbody tr{
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
+
+.finansman .table tbody tr:last-child{
+    border-bottom: 1px solid #dee2e6;
+}
+
+.finansman .table .font-weight-light{
+    color: #ABACB1;
+}
+
+.finansman .table .color-1{
+    color:#1665D8;
+}
+
+.finansman .table .color-2{
+    color:#F6AB2E;
+}
+
+.finansman .table .color-3{
+    color:#E7492E;
+}
+
+.finansman .table .color-4{
+    color:#3BAD4B;
+}
+
+/* Paylasimlar End*/
+
+
+
+
+
+
+.kurucu {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+}
+
+.kurucuALL {
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid #eee;
+    background: #fff;
+}
+
+.kurucularFlex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.kurucularCard {
+    width: 50%;
+    box-sizing: border-box;
+    display: table;
+    padding: 20px 0;
+    background: transparent;
+    border-bottom: 1px solid #eee;
+}
+
+.kurucularCardCellLeft {
+    display: table-cell;
+    width: 10%;
+    vertical-align: middle;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.kurucularCardCellMid {
+    display: table-cell;
+    width: 45%;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.kurucularCardCellRight {
+    display: table-cell;
+    width: 45%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.kurucularCardCellLeft .kurucuPhoto {
+    width: 80px;
+    height: 80px;
+    position: relative;
+}
+
+.kurucuPhoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+
+.kurucuName {
+    color: #58595c;
+    font-size: 0.9em;
+    font-weight: bold;
+    padding: 2.5px 0;
+}
+
+.kurucuTitle, .kurucuDesc {
+    color: #58585b;
+    font-size: 0.8em;
+    padding: 2.5px 0;
+}
+
+.kurucularCardCellRight button {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 #eee;
+}
+
+.follow {
+    background: #1b6adf;
+    color: #fff;
+}
+
+.unfollow {
+    color: #222;
+    background: #eee;
+}
+
+.kurucuPosition {
+    padding: 3px 6px;
+    border-radius: 5px;
+    font-weight: normal;
+    font-size: 0.8em;
+    margin-right: 5px;
+}
+
+.founder {
+    background: #33a943;
+    color: #fff;
+}
+
+
+.tagFlex {
+    padding: 20px 20px 0 20px;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.searchBox {
+    width: 200px;
+    display: table;
+    padding: 5px 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.searchBoxLeft {
+    width: 95%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.searchBoxRight {
+    width: 5%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.searchBoxLeft input {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    background: transparent;
+    border: none; outline: none;
+}
+
+.ellipse{
+    font-size: 20px;
+    float:right;
+    margin-top: 10px;
+}
+
+.myRow {
+    display: table-row;
+}
+
+/* Container */
+
+.containerApp {
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+}
+
+/* Şrket Bilgisi */
+
+.myTable {
+    width: 100%;
+    display: table;
+    margin: 0 auto 40px auto;
+}
+
+.cellLeft {
+    display: table-cell;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 25%;
+    vertical-align: bottom;
+}
+
+.cellRight {
+    display: table-cell;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 75%;
+    vertical-align: bottom;
+}
+
+.cellLeft img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.aboutTitle {
+    color: #222;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.aboutTagName {
+    color: #676769;
+}
+
+.aboutLocation {
+    font-style: italic;
+}
+
+/* Neden Biz */
+
+.aboutUs {
+    width: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    text-align: left;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Başvurulan poziston */
+
+.applyCellLeft {
+    display: table-cell;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 75%;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.applyCellRight {
+    display: table-cell;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 25%;
+    vertical-align: middle;
+    text-align: right;
+}
+
+h1.position {
+    font-size: 3em;
+}
+
+button.apply {
+    padding: 10px 0;
+    border-radius: 5px;
+    background: #37b148;
+    color: #fff;
+    border: none; outline: none;
+    width: 200px;
+}
+
+.aboutContent {
+    font-size: 1.3em;
+}
+
+/* Tanımlar */
+
+.faq {
+    width: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    display: table;
+    background: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.question {
+    width: 90%;
+    display: table-cell;
+    padding-bottom: 20px;
+    color: #555556;
+    border-bottom: 1px solid #eee;
+}
+
+.question h1 {
+    font-size: 1.3em;
+}
+
+.answer {
+    width: 90%;
+    display: table-cell;
+    padding: 20px 0;
+    color: #676769;
+}
+
+.answer p, .answer ul li {
+    font-size: 1.1em;
+}
+
+.faq ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.faq ul li {
+    padding: 5px 0;
+}
+
+
+.mth-user-card{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.mth-user-card img.rounded-circle{
+    width: 75px;
+    height: 75px;
+
+}
+
+.mth-user-info{
+    padding-bottom: 20px;
+    border-bottom:  1px solid #EAEDF3;  
+}
+
+.mth-profile-link{
+    border-bottom:  1px solid #EAEDF3;  
+    padding-bottom: 10px;
+}
+
+
+.mth-company-card{
+    padding:20px;
+}
+
+.mth-company-card .istatistikler{
+    padding:20px;
+}
+
+.mth-company-card .istatistikler .num{
+    font-weight: 700;
+    font-size: 18px;
+    color: #6B6C6F;
+}
+
+.mth-company-card .istatistikler .text{
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.mth-company-card .takipciler{
+    border-right: 1px solid #eaedf3;
+}
+
+.mth-company-card .takipciler, .mth-company-card .takip{
+    width: 40%;
+    float: left;
+    margin-right: 5%;
+}
+
+.mth-company-card img{
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    float: left;
+}
+
+.mth-company-card span{
+    margin-left: 20px;
+}
+
+.mth-company-card .mth-company-title{
+    margin-left: 20px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+
+
+
+/* RESPONSIVE */
+
+/* MOBILE CSS */
+
+@media screen and (max-width:767px) and (min-width:100px) {
+
+    .containerApp {
+        width: 96%;
+    }
+
+    .cellLeft, .cellRight, .applyCellLeft, .applyCellRight {
+        display: table-row;
+        text-align: center;
+    }
+
+    h1.position {
+        font-size: 1.5em;
+        padding: 22px 0;
+    }
+
+    button.apply {
+        width: 100%;
+        margin-bottom: 14px;
+    }
+
+    .cellLeft img {
+        width: 50%;
+    }
+
+}
+    
+        
+}
+                                        
+@media screen and (max-width:991px) and (min-width:768px) { 
+            
+            
+                    
+}
+                                                                       
+                                          
+@media screen and (max-width:1024px) and (min-width:992px) { 
+              
+              
+                                 
+}
+                    
+@media screen and (max-width:1280px) and (min-width:1025px) { 
+                    
+    .containerApp {
+         width: 80%;
+    }  
+            
+}
+
+
+.myRow {
+    display: table-row;
+}
+
+/* Container */
+
+.containerApp {
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+}
+
+/* Nav */
+
+.nav {
+    width: 100%;
+    height: auto;
+    padding: 10px 0;
+}
+
+.navALL {
+    display: table;
+    width: 94%;
+    padding: 10px 0;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.navLeft {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.navRight {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.navFlex {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+    width: 750px;
+}
+
+/* width */
+.navFlex::-webkit-scrollbar {
+    width: 10px;
+    height: 3px;
+  }
+  
+  /* Track */
+  .navFlex::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  .navFlex::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  .navFlex::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.navFlexRight {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button#createEvent {
+    padding: 10px 14px;
+    border-radius: 5px;
+    background: #37b148;
+    color: #fff;
+    border: none; outline: none;
+    margin-right: 14px;
+}
+
+button#createEvent i {
+    margin-right: 10px;
+}
+
+
+/* Main */
+
+.main {
+    width: 100%;
+    height: auto;
+}
+
+.mainALL {
+    display: table;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 40px;
+    margin-top: -20px;
+}
+
+.mainCellLeft {
+    display: table-cell;
+    width: 70%;
+    vertical-align: top;
+    text-align: left;
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    padding-bottom: 20px;
+}
+
+.mainCellRight {
+    display: table-cell;
+    width: 30%;
+    vertical-align: top;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.mainCardFlex {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0 0 40px 0;
+    flex-wrap: wrap;
+}
+
+.mainCard {
+    width: 32%;
+    height: auto;
+    min-height: 320px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 0.59%;
+}
+
+.mainCardImage {
+    width: 100%;
+    height: 140px;
+    position: relative;
+}
+
+.mainCardImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+}
+
+.mainCardContent {
+    width: 100%;
+    height: auto;
+    display: table;
+    margin: 0 auto;
+    border-spacing: 0;
+    box-sizing: border-box;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.mainCardContentLeft {
+    display: table-cell;
+    width: 20%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.mainCardContentRight {
+    display: table-cell;
+    width: 80%;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 0.8em;
+    box-sizing: border-box;
+    padding: 14px 30px;
+}
+
+.mainCardContentRight p,  .mainCardContentRight h1 {
+    padding-bottom: 5px;
+}
+
+.mainCardContentRight h1 {
+    font-size: 1.1em;
+}
+
+.contentCard {
+    border-right: 1px solid #eee;
+}
+
+.weekDay {
+    color : #676769;
+    font-size: 0.9em;
+}
+
+.monthDay {
+    color: #141414;
+    font-size: 1.3em;
+}
+
+.mainCardButton {
+    width: 100%;
+    height: auto;
+    display: table;
+    margin: 0 auto;
+    border-spacing: 0;
+    box-sizing: border-box;
+    padding: 10px 5px;
+}
+
+.mainCardButtonLeft {
+    width: 50%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.mainCardButtonRight {
+    width: 50%;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 0.9em;
+    color: #676769;
+}
+
+.mainCardButtonLeft button {
+    width: 74%;
+    padding: 5px 0;
+    color: #222;
+    background: rgb(229, 229, 230, 0.5);
+    border-radius: 5px;
+    border: none; outline: none;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    font-size: 0.9em;
+}
+
+.heading {
+    font-size: 1.1em;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+/* Etkinlikler */
+
+.events {
+    width: 100%;
+    height: auto;
+    padding: 0 0 20px 0;
+}
+
+.eventsTop {
+    width: 70%;
+    height: auto;
+    display: table;
+    border-spacing: 0;
+}
+
+.eventsTopLeft {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 15%;
+}
+
+.eventsTopRight {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    width: 85%;
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+
+.eventsTopTitle {
+    font-size: 1.1em;
+}
+
+.eventsTopDate {
+    color: #676769;
+    font-size: 0.8em;
+    padding: 3px 0;
+}
+
+.eventsTopImage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3px 0;
+}
+
+.eventsTopImage img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.eventsTop .weekDay {
+    font-size: 1.2em;
+}
+
+.eventsTop .monthDay {
+    font-size: 1.8em;
+}
+
+.eventsBottom {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.eventsBottom button {
+    padding: 8px 4px;
+    width: 150px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    color: #676769;
+    outline: none;
+    background: transparent;
+}
+
+.eventsBottom button i {
+    margin-right: 10px;
+    color: #d9d9d9;
+}
+
+.selection {
+    padding: 8px 4px;
+    width: 150px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #676769;
+    margin-right: 14px;
+    margin-bottom: 3px;
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.selection:hover .selectionMenuALL {
+    display: block;
+}
+
+.selectionMenuALL {
+    padding: 10px 0;
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.selectionMenu {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    border: 1px solid #eee;
+}
+
+.selectionMenu ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.selectionMenu ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selectionMenu ul li:last-child {
+    border-bottom: none;
+}
+
+#selection {
+    width: auto; padding: 10px 14px;
+}
+
+.selection span {
+    margin-left: -10px;
+}
+
+.selection .arrowWrapper {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 8px;
+    font-size: 0.7em;
+}
+
+.leftALL {
+    box-sizing: border-box;
+    padding: 14px 8px 0 8px;
+    color: #1c92ed;
+    font-size: 1.2em;
+    text-align: center;
+    width: 80%;
+}
+
+.rightContainer {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 20px 10px;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.rightFlex {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.rightCard {
+    margin: 0 1% 14px 1%;
+    width: 48%;
+    height: 150px;
+    background: #1c92ed;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rightCardTint {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.rightCardTint p {
+    padding: 5px 0;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.absoluteIcon {
+    position: absolute;
+    font-size: 6em;
+    bottom: -10px;
+    right: -10px;
+    color: rgb(255, 255, 255, 0.2)
+}
+
+.rightList {
+    width: 100%;
+    height: auto;
+    color: #676769;
+}
+
+.rightList ul {
+    width: 100%;
+    padding: 10px 0;
+    list-style: none;
+}
+
+.rightList ul li {
+    padding: 10px 10px 16px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+.rightList ul li i {
+    margin-right: 14px;
+}
+
+.rightDevam {
+    width: 100%;
+    padding: 0 0;
+    text-align: center;
+    color: #676769;
+    font-weight: bold;
+}
+
+.rightHeading {
+    box-sizing: border-box;
+    padding: 0 8px 14px 8px;
+    color: #1c92ed;
+    font-size: 1.2em;
+}
+
+/* Takvim */
+
+.takvim {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 99;
+    background: rgb(4, 4, 28, 0.5);
+    top: 0; left: 0;
+    overflow: scroll;
+    display: none;
+}
+
+.takvim::-webkit-scrollbar {
+    display: none;
+}
+
+.takvimALL {
+    display: table;
+    width: 96%;
+    margin: 2vh auto;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    padding: 0;
+    height: 96vh;
+}
+
+#addImage {
+    padding: 8px 14px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border: none; outline: none;
+    border-radius: 10px;
+}
+
+/* Etkinlik OluÅŸtur */
+
+.createEvent {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 99;
+    background: rgb(4, 4, 28, 0.5);
+    top: 0; left: 0;
+    overflow: scroll;
+    display: none;
+}
+
+.createEvent::-webkit-scrollbar {
+    display: none;
+}
+
+.createALL {
+    display: table;
+    width: 30%;
+    margin: 90px auto;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    border-radius: 3px;
+    padding: 0;
+    height: auto;
+}
+
+.createHeader {
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid #eee;
+}
+
+.createHeaderALL {
+    display: table;
+    width: 94%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.createHeaderLeft {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.createHeaderRight {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+}
+
+.createHeaderLeft h1 {
+    font-size: 1.1em;
+}
+
+.createHeaderRight i {
+    color: #d9d9d9;
+    font-size: 0.8em;
+}
+
+.createImg {
+    width: 94%;
+    height: 150px;
+    position: relative;
+    margin: 10px auto 10px auto;
+}
+
+.createImg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.createTable {
+    width: 94%;
+    display: table;
+    margin: 0 auto;
+    color: #676769;
+    padding-bottom: 14px;
+}
+
+.buttonCellLeft {
+    display: table-cell;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.buttonCellRight {
+    display: table-cell;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: right;
+}
+
+.buttonCellLeft button.cancelModal {
+    padding: 7px 14px;
+    color: #222;
+    background: rgb(229, 229, 230, 0.5);
+    border-radius: 5px;
+    border: none; outline: none;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    font-size: 0.9em;
+}
+
+.buttonCellRight button.createModal {
+    padding: 7px 14px;
+    border-radius: 5px;
+    background: #37b148;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.createCellHalf {
+    display: table-cell;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.createCell {
+    display: table-cell;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: left;
+}
+
+.createTable input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 0.5px solid #eee;
+    margin-top: 5px;
+}
+
+.createTable textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 8px;
+    border-radius: 3px;
+    border: 0.5px solid #eee;
+    margin-top: 5px;
+}
+
+
+
+
+
+/* RESPONSIVE */
+
+/* MOBILE CSS */
+
+@media screen and (max-width:767px) and (min-width:100px) {
+
+.containerApp {
+    width: 98%;
+}
+
+.mainALL {
+    border-spacing: 0;
+    margin-top: 0;
+}    
+
+.mainCellLeft, .mainCellRight {
+    display: table-row;
+}     
+
+.mainCard {
+    width: 100%;
+    margin: 0 0 20px 0;
+}  
+
+.rightCard {
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+
+.eventsBottom {
+    flex-direction: column;
+}
+
+#selection {
+    margin-left: 0 !important;
+}
+
+.navFlex, .navFlexRight {
+    flex-direction: column;
+}
+
+.navFlex {
+    width: auto;
+    flex-wrap: wrap;
+}
+
+.navLeft, .navRight {
+    display: table-row;
+}
+
+.navALL {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.selection {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+.searchBox {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#createEvent {
+    width: 100%;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
+.eventsBottom, .eventsTop {
+    width: 100%;
+}
+
+.eventsBottom button {
+    width: 100%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.leftALL {
+    width: 100%;
+}
+
+.createALL {
+    width: 98%;
+    margin-top: 20px;
+}
+
+             
+.finansman td b{
+    font-size: 15px;
+}
+
+                          
+@media (max-width:991px) { 
+    
+    .member-nav{
+        position: absolute!important;
+        top: 20px!important;
+        right: 10px!important;
+    }
+
+    .navbar-brand{
+        margin:0 auto!important;
+        border:none!important;
+    }
+            
+}
+
+                                  
+@media screen and (max-width:991px) and (min-width:768px) { 
+    
+    
+            
+}
+                                                               
+                                  
+@media screen and (max-width:1024px) and (min-width:992px) { 
+      
+      
+                         
+}
+            
+@media screen and (max-width:1280px) and (min-width:1025px) { 
+            
+    .containerApp {
+        width: 98%;;
+    } 
+
+    .createALL {
+        width: 40%;
+        margin-top: 70px;
+    }
+    
+}
