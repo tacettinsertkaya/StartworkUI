@@ -1,6 +1,6 @@
 <template >
 
-            <div class="uik-container-v__container">
+  <div class="uik-container-v__container">
                 <div class="page-container header">
                     <section class="pb-5 bg-white">
                         <div class="container-fluid">
@@ -11,7 +11,7 @@
                                             <div><img class="img-fluid" src="@/assets/images/logo.png" alt=""></div>
                                         </div>
                                         <div class="col-12 col-lg-6">
-                                            <h5 class="fs22 mb-0">BUBA Campus</h5></li>
+                                            <h5 class="fs22 mb-0">BUBA Campus</h5>
                                             <span class="fs18">@bubacampus</span>
                                             <h5 class="font-weight-light mt-3">Founder of StartWork</h5>
                                             <h5 class="font-weight-light fs18 font-italic mt-3">Usak, Turkey</h5>
@@ -171,7 +171,7 @@
                                     <div class="page-wrapper">
                                         <div class="page-content">
                                             <h3 class="tab-title">Genel Bakış</h3>
-                                            <p class="mt-5">
+                                       
                                                 <div class="bakis-slider owl-carousel">
                                                     <div class="item">
                                                         <img src="@/assets/images/mh_buba_campus.png" style="width: 100%;height: auto;">
@@ -183,7 +183,7 @@
                                                         <img src="@/assets/images/mh_buba_campus.png" style="width: 100%;height: auto;">
                                                     </div>
                                                 </div>
-                                            </p>
+                                            
                                         </div>
                                     </div>
                                 </section>
@@ -1391,8 +1391,8 @@
 
                      
                 </div>
-            </div>
       
+  </div>
 
 </template>
 
@@ -1405,14 +1405,5 @@ export default {
 </script>
 
 <script>
-    $(document).ready(function() {
-        $('.bakis-slider').owlCarousel({
-            items:1,
-            singleItem:true,
-            dots:true,
-            nav:true,
-            loop:true,
-            pagination:false
-        });
-    });
+   
     </script>
