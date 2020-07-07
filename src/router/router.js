@@ -11,6 +11,13 @@ import Settings from "@/components/pages/settings/settings";
 
 import Login from "@/components/pages/login/login";
 import Signup from "@/components/pages/signup/signup";
+import Profile from "@/components/pages/profile/profile";
+import Apply from "@/components/pages/apply/apply";
+import Network from "@/components/pages/network/network";
+import Discussion from "@/components/pages/discussion/discussion";
+import Work from "@/components/pages/work/work";
+import Ecosystem from "@/components/pages/ecosystem/ecosystem";
+import Event from "@/components/pages/event/event";
 
 Vue.use(Router);
 
@@ -36,19 +43,39 @@ export default new Router({
           component: Dashboard
         },
         {
-          path: "student",
-          name: "student",
-          component: Student
+          path: "profile",
+          name: "profile",
+          component: Profile
         },
         {
-          path: "wizard",
-          name: "wizard",
-          component: Wizard
+          path: "apply",
+          name: "apply",
+          component: Apply
         },
         {
-          path: "reports",
-          name: "reports",
-          component: Reports
+          path: "network",
+          name: "network",
+          component: Network
+        },
+        {
+          path: "discussion",
+          name: "discussion",
+          component: Discussion
+        },
+        {
+          path: "work",
+          name: "work",
+          component: Work
+        },
+        {
+          path: "ecosystem",
+          name: "ecosystem",
+          component: Ecosystem
+        },
+        {
+          path: "event",
+          name: "event",
+          component: Event
         },
         {
           path: "settings",
