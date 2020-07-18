@@ -83,7 +83,7 @@
                     <input
                       type="text"
                       class="uik-input__input"
-                      v-model="email"
+                      v-model="user.email"
                       name="email"
                       placeholder="e-posta"
                     />
@@ -94,7 +94,7 @@
                   <div class="uik-input__inputWrapper">
                     <input
                       type="password"
-                      v-model="password"
+                      v-model="user.password"
                       class="uik-input__input"
                       name="password"
                       placeholder="********"
@@ -118,14 +118,14 @@
                   <p>Facebook</p>
                   <i class="uikon uik-buildings-signin-card__selectedCheck">check</i>
                 </button>
-                <button class="uik-buildings-signin-card__wrapper" type="button">
+                <button class="uik-buildings-signin-card__wrapper" type="button"   @click="loginWithWoogle()">
                   <i class="uikon">rocket</i>
                   <p>Google</p>
                   <i class="uikon uik-buildings-signin-card__selectedCheck">check</i>
                 </button>
               </div>
               <button
-                @click="sendLogin()"
+                @click="login()"
                 class="uik-btn__base uik-btn__success uik-buildings-signup__btnAction"
               >
                 <span class="uik-btn__content">Giriş</span>
@@ -149,8 +149,11 @@
 export default {
   data() {
     return {
+      user:{    
       email: "",
-      password: "",
+      password: ""
+      }
+     ,
       isError: false,
       studentUser: {
         token: "jf_e^fUjw6?%&3#MUDSEa+7_2LquH68Hp",
@@ -160,8 +163,10 @@ export default {
     };
   },
   methods: {
+    /*
     sendLogin() {
-      if ((this.email = "dev@gmail.com" && this.password == "dev123")) {
+      
+      if ((this.email  && this.password)) {
         this.$router.push("/dashboard");
         this.isError = false;
       } else {
@@ -169,9 +174,20 @@ export default {
       }
       this.email = "";
       this.password = "";
-      // this.$store.dispatch("login", this.studentUser);
+      this.$store.dispatch("login", this.studentUser);
+    }
+    */
+    login(){
+      this.$store.dispatch("login",{...this.user});
+      this.user.email="";
+      this.user.password="";
+
+    },
+    loginWithWoogle(){
+      this.$store.dispatch("loginWithWoogle");
     }
   }
+
 };
 </script>
 
