@@ -1398,7 +1398,34 @@
 
 <script>
 export default {
-    
+  data(){
+      return{
+          profile :{
+              nameSurname:"",
+              username:"",
+              city:"",
+              country:"",
+              email:"",
+              website:"",
+              linkedin:"",
+              twitter:"",
+              department:"",
+              school:"",
+              experience:"",
+              company:"",
+              biography:"",
+              createdAt:"",
+              updatedAt:""
+          }
+      }
+  },
+  methods:{
+      getLoginProfile(loginProfile){
+       profile.email = loginProfile.email;
+       profile.createdAt=loginProfile.createdAt;
+       profile.nameSurname  = loginProfile.nameSurname;
+      }
+  }
 }
 
 
