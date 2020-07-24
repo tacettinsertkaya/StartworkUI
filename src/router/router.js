@@ -2,13 +2,13 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import Layout from "@/components/pages/layout";
-
+import ResetEmail from "@/components/pages/resetpassword/reset-email";
+import ResetPassword from "@/components/pages/resetpassword/resetpassword";
 import Dashboard from "@/components/pages/dashboard";
 import Student from "@/components/pages/student/student";
 import Wizard from "@/components/pages/wizard/wizard";
 import Reports from "@/components/pages/reports/reports";
 import Settings from "@/components/pages/settings/settings";
-
 import Login from "@/components/pages/login/login";
 import Signup from "@/components/pages/signup/signup";
 import Profile from "@/components/pages/profile/profile";
@@ -32,6 +32,16 @@ export default new Router({
       path: "/signup",
       name: "signup",
       component: Signup
+    },
+    {
+      path: "/reset-email",
+      name: "reset-email",
+      component: ResetEmail
+    },
+    {
+      path: "/reset-password",
+      name: "reset-password",
+      component:ResetPassword
     },
     {
       path: "/",

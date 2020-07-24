@@ -13,8 +13,8 @@ class AuthService {
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
         }
-        console.log("response data ---> :", response.data.token);
-        return response.data;
+        //console.log("response data ---> :", response.data);
+       return response;
       });
   }
 
@@ -30,13 +30,20 @@ class AuthService {
         email: user.email,
         password: user.password
       })
-      .then(response => {
-        console.log("response ---> ", response);
-      });
+      
+  }
+
+  forgotPassword(user){
+    return httpClient
+    .post(API_URL+"forgotten-password",{
+      email:user.email
+    })
   }
 
   loginWithWoogle() {
-    return httpClient.get(API_URL + "google").then(response => {});
+    return httpClient
+    .get(API_URL + "google")
+    .then(response => {});
   }
 }
 

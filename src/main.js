@@ -5,7 +5,11 @@ import App from './App'
 import router from './router/router'
 import axios from 'axios';
 import {store} from './store/store'
+import Vuelidate from 'vuelidate'
 
+
+
+Vue.use(Vuelidate);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
