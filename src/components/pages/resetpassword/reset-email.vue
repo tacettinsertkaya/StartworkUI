@@ -8,7 +8,7 @@
               <h3>
                 <i class="fa fa-lock fa-4x"></i>
               </h3>
-              <h3 class="text-center">Şifre  Degiştirme aşalnı?</h3>
+              <h3 class="text-center">Parolanızı mı unuttunuz?</h3>
               <p>Şifrenizi buradan sıfırlayabilirsiniz.</p>
               <div class="panel-body">
                 <form id="register-form" role="form" autocomplete="off" class="form">
@@ -79,15 +79,12 @@ export default {
        .then((result) => {
        
             this.$alertify.alertWithTitle("E-posta Bilgisi", result.data, () =>
-            this.$alertify.warning("alert is closed"));
+            this.$alertify.warning("alert is closed")
+      );
        })
        .catch((err) => {
            
        });
-
-
-      
-      
     },
   },
   computed: {
