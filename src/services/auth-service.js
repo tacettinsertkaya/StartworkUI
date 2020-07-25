@@ -40,6 +40,13 @@ class AuthService {
     })
   }
 
+  resetPassword(user){
+   return httpClient
+   .post(API_URL+"forgot-password/"+user.token,{
+     newPassword:user.password
+   });
+  }
+
   loginWithWoogle() {
     return httpClient
     .get(API_URL + "google")

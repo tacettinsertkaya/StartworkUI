@@ -133,11 +133,9 @@
                       <small
                         v-if="!$v.user.password.required"
                         class="form-text text-danger"
-                      >Bu alan zorunludur...
-                      </small>
+                      >Bu alan zorunludur...</small>
 
-                      <small 
-                      v-if="!$v.user.password.minLength" class="form-text text-danger">
+                      <small v-if="!$v.user.password.minLength" class="form-text text-danger">
                         Lütfen şifreniz en az {{
                         $v.user.password.$params.minLength.min }} karakterden oluşmalıdır...
                       </small>
@@ -181,7 +179,7 @@
                 -->
                 <button
                   class="uik-btn__base uik-btn__success uik-buildings-signup__btnAction"
-                   :disabled="$v.$invalid"
+                  :disabled="$v.$invalid"
                   @click="saveUser"
                 >Get Started With Buildings</button>
               </div>
@@ -260,6 +258,8 @@ export default {
         password: "",
       };
       this.saveButtonClicked = true;
+
+      this.$router.push({ name: "login" });
     },
   },
   computed: {
