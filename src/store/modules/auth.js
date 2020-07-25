@@ -130,6 +130,14 @@ export const actions = {
     });
   },
 
+  resetPassword({commit},user){
+   return AuthService.resetPassword(user)
+   .then(response =>{
+    console.log(" reset password   -------> : ", response.data);
+     return response;
+   })
+  },
+
   loginWithWoogle({ commit }) {
     return AuthService.loginWithWoogle().then(response => {
       console.log("loginWithGoogle ---> :", response);

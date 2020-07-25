@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       user: {
-        email: "sungur@gmail.com",
+        email: "",
       },
     };
   },
@@ -85,6 +85,8 @@ export default {
        .catch((err) => {
            
        });
+
+       
     },
   },
   computed: {
