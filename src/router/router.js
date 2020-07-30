@@ -18,6 +18,10 @@ import Discussion from "@/components/pages/discussion/discussion";
 import Work from "@/components/pages/work/work";
 import Ecosystem from "@/components/pages/ecosystem/ecosystem";
 import Event from "@/components/pages/event/event";
+import AccountProfile from "@/components/pages/profile/account-profile";
+import AccountProfileHomepage from "@/components/pages/profile/account-profile-homepage";
+import PersonSetsInvestment from "@/components/pages/profile/person-sets-investment";
+import PersonSetsMentor from "@/components/pages/profile/person-sets-mentor";
 
 Vue.use(Router);
 
@@ -33,16 +37,7 @@ export default new Router({
       name: "signup",
       component: Signup
     },
-    {
-      path: "/reset-email",
-      name: "reset-email",
-      component: ResetEmail
-    },
-    {
-      path: "/reset-password/:token",
-      name: "reset-password",
-      component:ResetPassword
-    },
+   
     {
       path: "/",
       component: Layout,
@@ -92,9 +87,43 @@ export default new Router({
           name: "settings",
           component: Settings
         },
+        // {
+        //   path: "*",
+        //   redirect: "login"
+        // },
+        
         {
-          path: "*",
-          redirect: "login"
+          path:"/account",
+          name:"account",
+          component:AccountProfileHomepage,
+          children:[
+            {
+              path:"profile",
+              name:"profile",
+              component:AccountProfile
+            },
+            {
+              path:"investment",
+              name:"investment",
+              component:PersonSetsInvestment
+            },
+            {
+              path:"mentor",
+              name:"mentor",
+              component:PersonSetsMentor
+            }
+          ]
+        },
+       
+        {
+          path: "/reset-email",
+          name: "reset-email",
+          component: ResetEmail
+        },
+        {
+          path: "/reset-password/:token",
+          name: "reset-password",
+          component:ResetPassword
         }
       ]
     }

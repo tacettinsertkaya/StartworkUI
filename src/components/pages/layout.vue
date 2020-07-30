@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="root">
+    <div>
       <div class="uik-App__app">
         <navbar></navbar>
         <router-view />
