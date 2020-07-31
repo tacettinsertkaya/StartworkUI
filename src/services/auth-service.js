@@ -1,44 +1,56 @@
-import axios from 'axios';
+import httpClient from "../services/httpClient";
 
-const API_URL = 'http://localhost:4000/api/auth/';
+const API_URL = "http://localhost:4000/api/auth/";
 
 class AuthService {
   login(user) {
-    return axios
-      .post(API_URL + 'signin', {
+    return httpClient
+      .post(API_URL + "signin", {
         email: user.email,
         password: user.password
       })
       .then(response => {
         if (response.data.token) {
-          localStorage.setItem('token',response.data.token);
+          localStorage.setItem("token", response.data.token);
         }
-        console.log("response data ---> :",response.data.token);
-        return response.data;
+        //console.log("response data ---> :", response.data);
+       return response;
       });
   }
 
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
   }
 
   register(user) {
-    return axios.post(API_URL + 'signup', {
-      name: user.name,
-      surname :user.surname,
-      email: user.email,
-      password: user.password
-    })
-    .then(response =>{
-      console.log("response ---> ", response);
+    return httpClient
+      .post(API_URL + "signup", {
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        password: user.password
+      })
+      
+  }
+
+  forgotPassword(user){
+    return httpClient
+    .post(API_URL+"forgotten-password",{
+      email:user.email
     })
   }
-  
-  loginWithWoogle(){
-    return axios.get(API_URL+'google')
-    .then(response=>{
 
-    })
+  resetPassword(user){
+   return httpClient
+   .post(API_URL+"forgot-password/"+user.token,{
+     newPassword:user.password
+   });
+  }
+
+  loginWithWoogle() {
+    return httpClient
+    .get(API_URL + "google")
+    .then(response => {});
   }
 }
 

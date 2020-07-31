@@ -77,6 +77,10 @@
                       <span class="uik-content-title__wrapper">Name</span>
                       <div class="uik-input__inputWrapper">
                         <input type="text" class="uik-input__input" name="name" v-model="user.name" />
+                        <small
+                          v-if="!$v.user.name.required"
+                          class="form-text text-danger mt-1"
+                        >Bu Alan Zorunludur..!</small>
                       </div>
                     </div>
                     <div class>
@@ -88,6 +92,10 @@
                           name="surname"
                           v-model="user.surname"
                         />
+                        <small
+                          v-if="!$v.user.surname.required"
+                          class="form-text text-danger mt-1"
+                        >Bu Alan Zorunludur..!</small>
                       </div>
                     </div>
                   </div>
@@ -101,6 +109,14 @@
                         name="email"
                         placeholder="your@email.com"
                       />
+                      <small
+                        v-if="!$v.user.email.required"
+                        class="form-text text-danger mt-1"
+                      >Bu Alan Zorunludur..!</small>
+                      <small
+                        v-if="!$v.user.email.email"
+                        class="form-text text-danger mt-1"
+                      >Lütfen Geçerli Bir E-Posta Giriniz..!</small>
                     </div>
                   </div>
                   <div class>
@@ -111,8 +127,22 @@
                         class="uik-input__input"
                         name="password"
                         v-model="user.password"
-                        placeholder="·····"
+                        placeholder="Şifrenizi giriniz"
                       />
+
+                      <small
+                        v-if="!$v.user.password.required"
+                        class="form-text text-danger"
+                      >Bu alan zorunludur...</small>
+
+                      <small v-if="!$v.user.password.minLength" class="form-text text-danger">
+                        Lütfen şifreniz en az {{
+                        $v.user.password.$params.minLength.min }} karakterden oluşmalıdır...
+                      </small>
+                      <small v-if="!$v.user.password.maxLength" class="form-text text-danger">
+                        Lütfen şifreniz en fazla {{
+                        $v.user.password.$params.maxLength.max }} karakterden oluşmalıdır...
+                      </small>
                     </div>
                   </div>
                 </div>
@@ -149,7 +179,7 @@
                 -->
                 <button
                   class="uik-btn__base uik-btn__success uik-buildings-signup__btnAction"
-                  :disabled="saveEnabled"
+                  :disabled="$v.$invalid"
                   @click="saveUser"
                 >Get Started With Buildings</button>
               </div>
@@ -183,9 +213,15 @@
 </template>
 
 <script>
- import Vue from 'vue'
-import VueAlertify from 'vue-alertify';
- Vue.use(VueAlertify);
+import Vue from "vue";
+import VueAlertify from "vue-alertify";
+Vue.use(VueAlertify);
+import {
+  required,
+  email,
+  minLength,
+  maxLength,
+} from "vuelidate/lib/validators";
 export default {
   data() {
     return {
@@ -193,35 +229,38 @@ export default {
         name: "",
         surname: "",
         email: "",
-        password: ""
+        password: "",
       },
-      saveButtonClicked: false
+      saveButtonClicked: false,
     };
   },
   methods: {
     saveUser() {
-    
-      const user = this.$store.dispatch("register", {...this.user});
-        console.log(" Save User ------> : ",this.user);
-      if(user){
-       this.$alertify.alertWithTitle("Hesabınız Oluşturulamadı", "Bu e-posta daha önce kulanılmıştır. Lütfen e-postanızı kontrol ediniz!", () =>
-       this.$alertify.warning("alert is closed")
+      this.$store.dispatch("register", { ...this.user }).then(
+        (result) => {
+          console.log("save User -----> : ", result.data);
+          this.$alertify.alertWithTitle("E-posta Bilgisi", result.data, () =>
+            this.$alertify.warning("alert is closed")
+          );
+        },
+        (error) => {
+          console.log("save User -----> : ", result.error);
+          this.$alertify.alertWithTitle("E-posta Bilgisi", error.data, () =>
+            this.$alertify.warning("alert is closed")
+          );
+        }
       );
-     }else{
-      this.$alertify.alertWithTitle("Hesabınız Oluşturuldu", "Hesabınızı Aktifleştirmek için , size gönderilen  e-postayı kontrol ediniz !", () =>
-       this.$alertify.warning("alert is closed")
-      );
-     }
 
       this.user = {
         name: "",
         username: "",
         email: "",
-        password: ""
+        password: "",
       };
-     //.success("success");
       this.saveButtonClicked = true;
-    }
+
+      this.$router.push({ name: "login" });
+    },
   },
   computed: {
     saveEnabled() {
@@ -239,14 +278,33 @@ export default {
     isLoading() {
       if (this.saveButtonClicked) {
         return {
-          display: "block"
+          display: "block",
         };
       } else {
         return {
-          display: "none"
+          display: "none",
         };
       }
-    }
-  }
+    },
+  },
+  validations: {
+    user: {
+      name: {
+        required,
+      },
+      surname: {
+        required,
+      },
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+        minLength: minLength(6),
+        maxLength: maxLength(8),
+      },
+    },
+  },
 };
 </script>

@@ -1,14 +1,12 @@
 import { ApiURL } from "../../utility/endpoint";
 import httpClient from "../../services/httpClient";
 import Axios from "axios";
-import AuthService from '../../services/auth-service';
+import AuthService from "../../services/auth-service";
 
-
-const user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem("user"));
 const initialState = user
   ? { status: { loggedIn: true }, user }
   : { status: { loggedIn: false }, user: null };
-
 
 export const state = {
   studentUser: {
@@ -37,7 +35,7 @@ export const state = {
       }
     }
   },
-  initialState,
+  initialState
 };
 
 export const getters = {};
@@ -46,7 +44,6 @@ export const mutations = {
   setToken(state, userData) {
     state.studentUser = userData;
   },
-
 
   loginSuccess(state, user) {
     state.status.loggedIn = true;
@@ -66,11 +63,10 @@ export const mutations = {
   registerFailure(state) {
     state.status.loggedIn = false;
   }
-
-  
 };
 
 export const actions = {
+  /*
   login1({ commit, dispatch, state }, authData) {
     let authLink = ApiURL.studentLogin;
     console.log("authData", authData);
@@ -79,24 +75,25 @@ export const actions = {
       .post(authLink, authData)
       .then(response => {
         console.log("response", response);
-
         commit("setUserInfo", response);
         return response;
       })
       .catch(response => {
-        console.log("error-response", response);
         return response;
       });
-  },
+  }
+  */
+  
   login({ commit }, user) {
-    return AuthService.login(user).then(
-      user => {
-       // commit('loginSuccess', user);
-       console.log("Login user ----> :",user);
-        return Promise.resolve(user);
+    return AuthService.login(user)
+    .then(
+      response => {
+        // commit('loginSuccess', user);
+        console.log("Login user ----> :", response.data);
+        return response.data;
       },
       error => {
-        commit('loginFailure');
+        commit("loginFailure");
         return Promise.reject(error);
       }
     );
@@ -110,22 +107,47 @@ export const actions = {
   }
   */
 
-
   // register
   register({ commit }, user) {
-    return AuthService.register(user).then(
-      response => {
-          console.log(" Register Succcessss -------> : ",response.data);
-        commit("registerSuccess");
-        return response.data;
+    return AuthService.register(user)
+    .then(response => {
+      //  commit("registerSuccess");
+        return response;
       },
       error => {
-        commit("registerFailure");
-        return Promise.reject(error);
+        //commit("registerFailure");
+        return response
       }
     );
+  },
 
-    /*
+  // forgot passowrd
+  forgotPassword({ commit }, user) {
+    return AuthService.forgotPassword(user)
+    .then(response => {
+      console.log(" forgot password   -------> : ", response.data);
+      return response;
+    });
+  },
+
+  resetPassword({commit},user){
+   return AuthService.resetPassword(user)
+   .then(response =>{
+    console.log(" reset password   -------> : ", response.data);
+     return response;
+   })
+  },
+
+  loginWithWoogle({ commit }) {
+    return AuthService.loginWithWoogle().then(response => {
+      console.log("loginWithGoogle ---> :", response);
+    });
+  }
+};
+
+
+
+  /*
    return  httpClient
    .post(authLink, authData)
    .then(response => {
@@ -137,18 +159,6 @@ export const actions = {
      console.log("error-response", response);
      return response;
    });*/
-  },
-
-  loginWithWoogle({commit}){
-    return  AuthService.loginWithWoogle()
-    .then(
-      response=>{
-        console.log("loginWithGoogle ---> :",response)
-      }
-    );
-  }
-  
-};
 
 export default {
   state,

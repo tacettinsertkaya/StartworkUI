@@ -87,6 +87,14 @@
                       name="email"
                       placeholder="e-posta"
                     />
+                    <small
+                      v-if="!$v.user.email.required"
+                      class="form-text text-danger mt-1"
+                    >Bu Alan Zorunludur..!</small>
+                    <small
+                      v-if="!$v.user.email.email"
+                      class="form-text text-danger mt-1"
+                    >Lütfen Geçerli Bir E-Posta Giriniz..!</small>
                   </div>
                 </div>
                 <div class>
@@ -97,8 +105,21 @@
                       v-model="user.password"
                       class="uik-input__input"
                       name="password"
-                      placeholder="********"
+                      placeholder="Şifrenizi giriniz"
                     />
+                    <small
+                      v-if="!$v.user.password.required"
+                      class="form-text text-danger"
+                    >Bu alan zorunludur...</small>
+
+                    <small v-if="!$v.user.password.minLength" class="form-text text-danger">
+                      Lütfen şifreniz en az {{
+                      $v.user.password.$params.minLength.min }} karakterden oluşmalıdır...
+                    </small>
+                    <small v-if="!$v.user.password.maxLength" class="form-text text-danger">
+                      Lütfen şifreniz en fazla {{
+                      $v.user.password.$params.maxLength.max }} karakterden oluşmalıdır...
+                    </small>
                   </div>
                 </div>
               </div>
@@ -118,7 +139,11 @@
                   <p>Facebook</p>
                   <i class="uikon uik-buildings-signin-card__selectedCheck">check</i>
                 </button>
-                <button class="uik-buildings-signin-card__wrapper" type="button"   @click="loginWithWoogle()">
+                <button
+                  class="uik-buildings-signin-card__wrapper"
+                  type="button"
+                  @click="loginWithWoogle()"
+                >
                   <i class="uikon">rocket</i>
                   <p>Google</p>
                   <i class="uikon uik-buildings-signin-card__selectedCheck">check</i>
@@ -127,6 +152,7 @@
               <button
                 @click="login()"
                 class="uik-btn__base uik-btn__success uik-buildings-signup__btnAction"
+                :disabled="$v.$invalid"
               >
                 <span class="uik-btn__content">Giriş</span>
               </button>
@@ -139,55 +165,83 @@
         </p>
         <p>
           Eğer şifreni unuttuysan!
-          <router-link to="/reset-password">Yeni şifre oluştur</router-link>
+          <router-link to="/reset-email">Yeni şifre oluştur</router-link>
         </p>
       </div>
     </div>
   </div>
 </template>
 <script>
+import Vue from "vue";
+import VueAlertify from "vue-alertify";
+Vue.use(VueAlertify);
+import {
+  required,
+  email,
+  minLength,
+  maxLength,
+} from "vuelidate/lib/validators";
 export default {
   data() {
     return {
-      user:{    
-      email: "",
-      password: ""
-      }
-     ,
+      user: {
+        email: "",
+        password: "",
+      },
       isError: false,
       studentUser: {
         token: "jf_e^fUjw6?%&3#MUDSEa+7_2LquH68Hp",
         studentId: "240038",
-        password: "12345678"
-      }
+        password: "12345678",
+      },
     };
   },
   methods: {
-    /*
-    sendLogin() {
-      
-      if ((this.email  && this.password)) {
-        this.$router.push("/dashboard");
-        this.isError = false;
-      } else {
-        this.isError = true;
-      }
-      this.email = "";
-      this.password = "";
-      this.$store.dispatch("login", this.studentUser);
-    }
-    */
-    login(){
-      this.$store.dispatch("login",{...this.user});
-      this.user.email="";
-      this.user.password="";
+    login() {
+      this.$store.dispatch("login", { ...this.user }).then(
+        (result) => {
+          console.log("login result --->:", result[0]);
+          if (result[0].email) {
+            this.$alertify.alertWithTitle(
+              "E-posta Bilgisi",
+              "Sistemimize Hoş Geldiniz",
+              () => this.$alertify.warning("alert is closed")
+            );
+          } else {
+            this.$alertify.alertWithTitle(
+              "E-posta Bilgisi",
+              result[0],
+              () => this.$alertify.warning("alert is closed")
+            );
+          }
+        },
+        (err) => {
+          this.$alertify.alertWithTitle("E-posta Bilgisi", err.result[0], () =>
+            this.$alertify.warning("alert is closed")
+          );
+        }
+      );
 
+      this.user.email = "";
+      this.user.password = "";
     },
-    loginWithWoogle(){
+    loginWithWoogle() {
       this.$store.dispatch("loginWithWoogle");
-    }
-  }
+    },
+  },
 
+  validations: {
+    user: {
+      email: {
+        required,
+        email,
+      },
+      password: {
+        required,
+        minLength: minLength(6),
+        maxLength: maxLength(8),
+      },
+    },
+  },
 };
 </script>
-
