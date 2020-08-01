@@ -262,13 +262,13 @@ export default {
         (result) => {
           console.log("save User -----> : ", result.data);
           this.$alertify.alertWithTitle("E-posta Bilgisi", result.data, () =>
-            this.$alertify.warning("alert is closed")
+            this.$alertify.success("Kayıt işlemi başarılı")
           );
         },
         (error) => {
           console.log("save User -----> : ", result.error);
           this.$alertify.alertWithTitle("E-posta Bilgisi", error.data, () =>
-            this.$alertify.warning("alert is closed")
+            this.$alertify.error("Kayıt işlemi başarısız")
           );
         }
       );

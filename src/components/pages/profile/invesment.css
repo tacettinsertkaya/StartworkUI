@@ -1,0 +1,88 @@
+.home {
+  margin-bottom: 10px;
+}
+.box {
+  margin-top: 20px;
+  width: 103%;
+  border: 5px solid white;
+  padding: 10px;
+  box-shadow: 10px 10px 10px 10px grey;
+  background-color: white;
+  margin-left: 0px;
+}
+.style {
+  font-weight: bold;
+  font-size: 20px;
+}
+.profile-completeness {
+  font-size: 18px;
+}
+
+.healthbar {
+  width: 70%;
+  height: 20px;
+  background-color: #eee;
+  margin: auto;
+  transition: width 500ms;
+}
+
+.homepage {
+  margin-top: 2%;
+  margin-bottom: 10px;
+}
+
+.left-part {
+  background-color: white;
+  border: 1px solid rgb(238, 226, 226);
+  padding: 20px 20px 20px 20px;
+  margin-left: 10px;
+}
+.left-part-title {
+  text-align: left;
+  font-weight: bold;
+}
+.left-part-altTitle {
+  text-align: left;
+  margin-top: 7px;
+}
+
+.form {
+  color: black;
+}
+
+.card-header-details {
+  font-weight: 600;
+  text-align: left;
+  color: rgb(212, 212, 207);
+}
+
+label {
+  text-align: left;
+  color: rgb(159, 167, 158);
+}
+
+.profile-etiketi {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  color: rgb(164, 185, 181);
+}
+.form-check-group {
+  color: black;
+  text-align: left;
+}
+.form-check-input {
+  margin-top: 9px;
+}
+.form-check-label {
+  text-align: left;
+  color: black;
+  margin-left: 10px;
+  font-size: 17px;
+}
+
+.save {
+  text-align: left;
+  width: 80%;
+  text-align: center;
+}

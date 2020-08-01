@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import { store } from "../store/store";
 
 import Layout from "@/components/pages/layout";
 import ResetEmail from "@/components/pages/resetpassword/reset-email";
@@ -37,10 +38,18 @@ export default new Router({
       name: "signup",
       component: Signup
     },
-   
+    // this.$store.getters.movies
     {
       path: "/",
       component: Layout,
+      beforeEnter: (to, from, next) => {
+        console.log("store.getters.isAuth", store.getters.isAuth);
+        if (store.getters.isAuth) {
+          next();
+        } else {
+          next({ path: "/login" });
+        }
+      },
       children: [
         {
           path: "dashboard",
@@ -87,45 +96,39 @@ export default new Router({
           name: "settings",
           component: Settings
         },
-        // {
-        //   path: "*",
-        //   redirect: "login"
-        // },
-        
         {
-          path:"/account",
-          name:"account",
-          component:AccountProfileHomepage,
-          children:[
+          path: "/account",
+          name: "account",
+          component: AccountProfileHomepage,
+          children: [
             {
-              path:"profile",
-              name:"profile",
-              component:AccountProfile
+              path: "profile",
+              name: "profile",
+              component: AccountProfile
             },
             {
-              path:"investment",
-              name:"investment",
-              component:PersonSetsInvestment
+              path: "investment",
+              name: "investment",
+              component: PersonSetsInvestment
             },
             {
-              path:"mentor",
-              name:"mentor",
-              component:PersonSetsMentor
+              path: "mentor",
+              name: "mentor",
+              component: PersonSetsMentor
             }
           ]
-        },
-       
-        {
-          path: "/reset-email",
-          name: "reset-email",
-          component: ResetEmail
-        },
-        {
-          path: "/reset-password/:token",
-          name: "reset-password",
-          component:ResetPassword
         }
       ]
+    },
+    {
+      path: "/reset-email",
+      name: "reset-email",
+      component: ResetEmail
+    },
+    {
+      path: "/reset-password/:token",
+      name: "reset-password",
+      component: ResetPassword
     }
   ]
 });
