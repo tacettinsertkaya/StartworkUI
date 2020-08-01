@@ -25,10 +25,10 @@
                   <div class="col-md-4">
                     <div class="form-check">
                       <input
-                        type="checkbox"
+                        type="radio"
                         class="form-check-input"
-                        name="checkbox"
-                        id="exampleCheck2"
+                        v-model="investment.isInvesment"
+                        value="true"
                       />
                       <label class="form-check-label" for="exampleCheck2">Evet</label>
                     </div>
@@ -37,10 +37,10 @@
                   <div class="col-md-4">
                     <div class="form-check">
                       <input
-                        type="checkbox"
+                        type="radio"
+                        v-model="investment.isInvesment"
                         class="form-check-input"
-                        name="checkbox"
-                        id="exampleCheck2"
+                        value="false"
                       />
                       <label class="form-check-label" for="exampleCheck1">Hayır</label>
                     </div>
@@ -50,13 +50,13 @@
 
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="validationServerUsername">PORTFÖY EKLE</label>
-                  <select class="custom-select" required>
-                    <option value>Yetenekler Yazınız</option>
-                    <option value="healty">STARTUP ADI</option>
-                    <option value="saglik">SAĞLIK</option>
-                    <option value="marketing">MARKETİNG</option>
-                    <option value="front-end">FRONT-END</option>
+                  <p style="text-align: initial;">PORTFÖY EKLE</p>
+                  <select class="custom-select" v-model="investment.portfoyId" required>
+                    <option value="0">Yetenekler Yazınız</option>
+                    <option value="1">STARTUP ADI</option>
+                    <option value="2">SAĞLIK</option>
+                    <option value="3">MARKETİNG</option>
+                    <option value="4">FRONT-END</option>
                   </select>
                   <div class="invalid-feedback">Example invalid custom select feedback</div>
                 </div>
@@ -74,24 +74,24 @@
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          v-model="investment.isStatus"
+                          type="radio"
+                          value="true"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
                         />
-                        <label class="form-check-label" for="exampleCheck2">Evet</label>
+                        <label class="form-check-label">Evet</label>
                       </div>
                     </div>
 
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          v-model="investment.isStatus"
+                          type="radio"
+                          value="false"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
                         />
-                        <label class="form-check-label" for="exampleCheck1">Hayır</label>
+                        <label class="form-check-label">Hayır</label>
                       </div>
                     </div>
                   </div>
@@ -110,10 +110,10 @@
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
+                          v-model="investment.isSector"
+                          value="true"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
                         />
                         <label class="form-check-label" for="exampleCheck2">Evet</label>
                       </div>
@@ -122,10 +122,10 @@
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
+                          v-model="investment.isSector"
+                          value="false"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
                         />
                         <label class="form-check-label" for="exampleCheck1">Hayır</label>
                       </div>
@@ -152,7 +152,7 @@
                 <div class="row form-check-group">
                   <p
                     style="color: rgb(184, 174, 161);margin-top: 10px;margin-left: 10PX;"
-                  >YATIRIM AŞAMASI  TERCİHİ VAR MI ?</p>
+                  >YATIRIM AŞAMASI TERCİHİ VAR MI ?</p>
                 </div>
 
                 <div class="form-group">
@@ -188,7 +188,7 @@
                 <div class="row form-check-group">
                   <p
                     style="color: rgb(184, 174, 161);margin-top: 10px;margin-left: 10PX;"
-                  > YATIRIM AŞAMASI TERCİHİ</p>
+                  >YATIRIM AŞAMASI TERCİHİ</p>
                 </div>
 
                 <div class="form-group">
@@ -318,93 +318,23 @@
   </div>
 </template>
 
+
+<script>
+export default {
+  data() {
+    return {
+      investment: {
+        isInvesment: false,
+        portfoyId: 0,
+        isStatus: false,
+        isSector: false,
+      },
+    };
+  },
+};
+</script>
+
+
 <style scoped>
-.home {
-  margin-bottom: 10px;
-}
-.box {
-  margin-top: 20px;
-  width: 103%;
-  border: 5px solid white;
-  padding: 10px;
-  box-shadow: 10px 10px 10px 10px grey;
-  background-color: white;
-  margin-left: 0px;
-}
-.style {
-  font-weight: bold;
-  font-size: 20px;
-}
-.profile-completeness {
-  font-size: 18px;
-}
-
-.healthbar {
-  width: 70%;
-  height: 20px;
-  background-color: #eee;
-  margin: auto;
-  transition: width 500ms;
-}
-
-.homepage {
-  margin-top: 2%;
-  margin-bottom: 10px;
-}
-
-.left-part {
-  background-color: white;
-  border: 1px solid rgb(238, 226, 226);
-  padding: 20px 20px 20px 20px;
-  margin-left: 10px;
-}
-.left-part-title {
-  text-align: left;
-  font-weight: bold;
-}
-.left-part-altTitle {
-  text-align: left;
-  margin-top: 7px;
-}
-
-.form {
-  color: black;
-}
-
-.card-header-details {
-  font-weight: 600;
-  text-align: left;
-  color: rgb(212, 212, 207);
-}
-
-label {
-  text-align: left;
-  color: rgb(159, 167, 158);
-}
-
-.profile-etiketi {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-  color: rgb(164, 185, 181);
-}
-.form-check-group {
-  color: black;
-  text-align: left;
-}
-.form-check-input {
-  margin-top: 9px;
-}
-.form-check-label {
-  text-align: left;
-  color: black;
-  margin-left: 10px;
-  font-size: 17px;
-}
-
-.save {
-  text-align: left;
-  width: 80%;
-  text-align: center;
-}
+@import "invesment.css";
 </style>

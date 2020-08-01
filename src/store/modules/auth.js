@@ -3,10 +3,9 @@ import httpClient from "../../services/httpClient";
 import Axios from "axios";
 import AuthService from "../../services/auth-service";
 
-const user = JSON.parse(localStorage.getItem("user"));
-const initialState = user
-  ? { status: { loggedIn: true }, user }
-  : { status: { loggedIn: false }, user: null };
+const token = localStorage.getItem("token");
+console.log("token", token);
+const isAuth = token ? true : false;
 
 export const state = {
   studentUser: {
@@ -35,10 +34,15 @@ export const state = {
       }
     }
   },
-  initialState
+  isAuth
 };
 
-export const getters = {};
+export const getters = {
+  isAuth(state) {
+    console.log("state", state);
+    return state.isAuth;
+  }
+};
 
 export const mutations = {
   setToken(state, userData) {
@@ -46,16 +50,14 @@ export const mutations = {
   },
 
   loginSuccess(state, user) {
-    state.status.loggedIn = true;
-    state.user = user;
+    state.isAuth = true;
   },
   loginFailure(state) {
-    state.status.loggedIn = false;
     state.user = null;
   },
   logout(state) {
-    state.status.loggedIn = false;
-    state.user = null;
+    localStorage.removeItem("token");
+    state.isAuth = false;
   },
   registerSuccess(state) {
     state.status.loggedIn = false;
@@ -83,12 +85,11 @@ export const actions = {
       });
   }
   */
-  
+
   login({ commit }, user) {
-    return AuthService.login(user)
-    .then(
+    return AuthService.login(user).then(
       response => {
-        // commit('loginSuccess', user);
+        commit("loginSuccess");
         console.log("Login user ----> :", response.data);
         return response.data;
       },
@@ -99,43 +100,38 @@ export const actions = {
     );
   },
 
-  // logout kismi
-  /*
   logout({ commit }) {
-    AuthService.logout();
     commit("logout");
-  }
-  */
+    return AuthService.logout();
+  },
 
   // register
   register({ commit }, user) {
-    return AuthService.register(user)
-    .then(response => {
-      //  commit("registerSuccess");
+    return AuthService.register(user).then(
+      response => {
+        //  commit("registerSuccess");
         return response;
       },
       error => {
         //commit("registerFailure");
-        return response
+        return response;
       }
     );
   },
 
   // forgot passowrd
   forgotPassword({ commit }, user) {
-    return AuthService.forgotPassword(user)
-    .then(response => {
+    return AuthService.forgotPassword(user).then(response => {
       console.log(" forgot password   -------> : ", response.data);
       return response;
     });
   },
 
-  resetPassword({commit},user){
-   return AuthService.resetPassword(user)
-   .then(response =>{
-    console.log(" reset password   -------> : ", response.data);
-     return response;
-   })
+  resetPassword({ commit }, user) {
+    return AuthService.resetPassword(user).then(response => {
+      console.log(" reset password   -------> : ", response.data);
+      return response;
+    });
   },
 
   loginWithWoogle({ commit }) {
@@ -145,9 +141,7 @@ export const actions = {
   }
 };
 
-
-
-  /*
+/*
    return  httpClient
    .post(authLink, authData)
    .then(response => {
