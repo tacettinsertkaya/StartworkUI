@@ -14,43 +14,44 @@ class AuthService {
           localStorage.setItem("token", response.data.token);
         }
         //console.log("response data ---> :", response.data);
-       return response;
+        return response;
       });
   }
 
   logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    return true;
+  }
+
+  isAuth() {
+    var token = localStorage.getItem("token");
+    if (token != null && token != "" && token != undefined) return true;
+    else return false;
   }
 
   register(user) {
-    return httpClient
-      .post(API_URL + "signup", {
-        name: user.name,
-        surname: user.surname,
-        email: user.email,
-        password: user.password
-      })
-      
+    return httpClient.post(API_URL + "signup", {
+      name: user.name,
+      surname: user.surname,
+      email: user.email,
+      password: user.password
+    });
   }
 
-  forgotPassword(user){
-    return httpClient
-    .post(API_URL+"forgotten-password",{
-      email:user.email
-    })
+  forgotPassword(user) {
+    return httpClient.post(API_URL + "forgotten-password", {
+      email: user.email
+    });
   }
 
-  resetPassword(user){
-   return httpClient
-   .post(API_URL+"forgot-password/"+user.token,{
-     newPassword:user.password
-   });
+  resetPassword(user) {
+    return httpClient.post(API_URL + "forgot-password/" + user.token, {
+      newPassword: user.password
+    });
   }
 
   loginWithWoogle() {
-    return httpClient
-    .get(API_URL + "google")
-    .then(response => {});
+    return httpClient.get(API_URL + "google").then(response => {});
   }
 }
 

@@ -62,11 +62,13 @@
           <img class="img-fluid" src="@/assets/images/10.png" alt />
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <router-link class="dropdown-item" to="profile">Profil</router-link>
+          <router-link class="dropdown-item" to="/account/profile">Profil</router-link>
           <div class="dropdown-divider"></div>
           <router-link class="dropdown-item" to="company">Şirket</router-link>
           <div class="dropdown-divider"></div>
           <router-link class="dropdown-item" to="settings">Ayarlar</router-link>
+          <div class="dropdown-divider"></div>
+          <button @click="logout" type="button" class="dropdown-item">Çıkış Yap</button>
         </div>
       </li>
     </ul>
@@ -75,5 +77,14 @@
 
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      this.$store.commit("logout");
+      this.$alertify.success("Başarlı bir şekilde çıkış yapıldı");
+
+      this.$router.push("/login");
+    },
+  },
+};
 </script>
