@@ -9,11 +9,17 @@
               <p class="left-part-altTitle">Profil Bilgilerini Gir</p>
               <hr style="width:105%;" />
             </div>
-            <form class="form">
+            <form class="form" @submit.prevent="saveProfile">
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="inputName">ADI SOYADI</label>
-                  <input type="name" class="form-control" id="inputName" placeholder="Ad ve Soyad" />
+                  <input
+                    type="name"
+                    class="form-control"
+                    id="inputName"
+                    v-model="profile.nameSurname"
+                    placeholder="Ad ve Soyad"
+                  />
                 </div>
 
                 <div class="form-group col-md-6">
@@ -22,6 +28,7 @@
                     type="text"
                     class="form-control"
                     id="inputCalender"
+                    v-model="profile.membershipDate"
                     placeholder="Tarih Giriniz"
                   />
                 </div>
@@ -33,11 +40,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupPrepend3">@</span>
                     </div>
-                    <!-- input içindeki is-valid-->
+                    <!-- input içindeki class içine  is-valid -->
                     <input
                       type="text"
-                      class="form-control is-invalid"
+                      class="form-control"
                       id="validationServerUsername"
+                      v-model="profile.username"
                       placeholder="Kullanıcı Adınızı Giriniz"
                       aria-describedby="inputGroupPrepend3"
                       required
@@ -50,22 +58,31 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ŞEHİR</label>
-                  <select class="custom-select" required>
+                  {{profile.city}}
+                  <select
+                    class="custom-select"
+                    required
+                    v-model="profile.city"
+                  >
                     <option value>Şehir Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Şanlıurfa</option>
-                    <option value="3">Diyarbakır</option>
+                    <option
+                      :value="city.id"
+                      :key="'city'+index"
+                      v-for="(city,index) in getCities"
+                    >{{city.name}}</option>
                   </select>
                   <div class="invalid-feedback">Example invalid custom select feedback</div>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ÜLKE</label>
-                  <select class="custom-select" required>
+                  <select class="custom-select" required v-model="profile.countryId">
                     <option value>Ülke Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Şanlıurfa</option>
-                    <option value="3">Diyarbakır</option>
+                    <option
+                      :value="country.id"
+                      :key="'country'+index"
+                      v-for="(country,index) in countries"
+                    >{{country.name}}</option>
                   </select>
                   <div class="invalid-feedback">Example invalid custom select feedback</div>
                 </div>
@@ -78,6 +95,7 @@
                     type="email"
                     class="form-control"
                     id="inputEmail4"
+                    v-model="profile.email"
                     placeholder="E-postanızı Giriniz"
                   />
                 </div>
@@ -88,6 +106,7 @@
                     type="text"
                     class="form-control"
                     id="inputWebsite"
+                    v-model="profile.website"
                     placeholder="Web sitenizi Giriniz"
                   />
                 </div>
@@ -100,6 +119,7 @@
                     type="text"
                     class="form-control"
                     id="inputLinkedin"
+                    v-model="profile.linkedin"
                     placeholder="Linkedin Giriniz"
                   />
                 </div>
@@ -110,6 +130,7 @@
                     type="text"
                     class="form-control"
                     id="inputTwitter"
+                    v-model="profile.twitter"
                     placeholder="Twitteri Giriniz"
                   />
                 </div>
@@ -117,54 +138,72 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">BÖLÜM</label>
-                  <select class="custom-select" required>
+                  <select class="custom-select" required v-model="profile.department">
                     <option value>Bölüm Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Şanlıurfa</option>
-                    <option value="3">Diyarbakır</option>
+                    <option
+                      :value="department.id"
+                      :key="'department' +index"
+                      v-for="(department , index) in newDepartments"
+                    >{{department.name}}</option>
                   </select>
                   <div class="invalid-feedback">Example invalid custom select feedback</div>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">OKUL</label>
-                  <select class="custom-select" required>
+                  <select
+                    class="custom-select"
+                    required
+                    v-model="profile.university"
+                    @change="universitySelected"
+                  >
                     <option value>Okul Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Şanlıurfa</option>
-                    <option value="3">Diyarbakır</option>
+                    <option
+                      :value="university.id"
+                      :key="'university'+index"
+                      v-for="(university,index) in getUniversities"
+                    >{{university.name}}</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <div class="invalid-feedback">Lütfen Bir Okul Seçiniz</div>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">DENEYİM VEYA POZİSYON</label>
-                  <select class="custom-select" required>
+                  <select class="custom-select" required v-model="profile.experience">
                     <option value>Deneyim Veya Pozisyonu Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Şanlıurfa</option>
-                    <option value="3">Diyarbakır</option>
+                    <option
+                      :value="experience.id"
+                      :key="'experience'+index"
+                      v-for="(experience,index) in experiences"
+                    >{{experience.name}}</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <div class="invalid-feedback">Lütfen Deneyeim Ve Pozisyonu Seçiniz</div>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ŞİRKET VEYA STARTUP</label>
-                  <select class="custom-select" required>
-                    <option value>Şirket Veya Startup Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Şanlıurfa</option>
-                    <option value="3">Diyarbakır</option>
+                  <select class="custom-select" required v-model="profile.companyId">
+                    <option value="">Şirket Veya Startup Seçiniz</option>
+                    <option  :value="company.id" 
+                    :key="'company'+index"
+                    v-for="(company,index) in companies"
+                    >{{company.name}}</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <div class="invalid-feedback">Lütfen Bir Şirket Veya Startup Seçiniz</div>
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="biyografi">BİYOGRAFİ</label>
-                <textarea class="form-control" id="biyografi" rows="3" placeholder="Hakkında ..."></textarea>
+                <textarea
+                  class="form-control"
+                  id="biyografi"
+                  rows="3"
+                  v-model="profile.biography"
+                  placeholder="Hakkında ..."
+                ></textarea>
               </div>
 
               <div class="form-group">
@@ -172,20 +211,19 @@
                   class="profile-etiketi"
                 >PROFİL ETİKETİ (SİZE UYGUN PROFİL TİPİ VARSA İŞARETLEYİNİZ)</p>
 
+                <!--
+                <p v-for="(i,index) in profile.profileTags" :key="'tags'+index">{{i}}</p>
+                -->
+
                 <div class="col form-check-groups">
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Girişimci</label>
-                  </div>
-
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck2" />
-                    <label class="form-check-label" for="exampleCheck2">Mentor</label>
-                  </div>
-
-                  <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck3" />
-                    <label class="form-check-label" for="exampleCheck3">Yatırımcı</label>
+                  <div class="form-check" v-for="(i,index) in tags" :key="'t'+index">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      v-model="profile.profileTags"
+                      :value="i.name"
+                    />
+                    <label class="form-check-label" for>{{i.name}}</label>
                   </div>
                 </div>
               </div>
@@ -193,34 +231,34 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">YETENEKLER</label>
-                  <select class="custom-select" required>
+                  <select class="custom-select" required v-model="profile.skill">
                     <option value>Yetenekler Yazınız</option>
-                    <option value="1">HELTY</option>
+                    <option value="1">HEALTY</option>
                     <option value="2">SAĞLIK</option>
                     <option value="3">MARKETİNG</option>
                     <option value="4">FRONT-END</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <div class="invalid-feedback">Lütfen Bir Yeteneğini Seçiniz</div>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ARIYOR</label>
-                  <select class="custom-select" required>
+                  <select class="custom-select" required v-model="profile.calling">
                     <option value>Yazınız</option>
-                    <option value="1">HELTY</option>
+                    <option value="1">HEALTY</option>
                     <option value="2">SAĞLIK</option>
                     <option value="3">MARKETİNG</option>
                     <option value="4">FRONT-END</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <div class="invalid-feedback">Lütfen Aradığınız Seçiniz</div>
                 </div>
               </div>
 
-              <hr style="margin-top:10%;width:103%">
+              <hr style="margin-top:10%;width:103%" />
 
               <div class="row">
                 <div class="col-md-3">
-                  <button type="submit" class="btn btn-success save">Kaydet</button>
+                  <button type="submit" class="btn btn-success save" @click="saveProfile">Kaydet</button>
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3"></div>
@@ -235,6 +273,115 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      profile: {
+        id: "",
+        nameSurname: "",
+        membershipDate: "",
+        username: "",
+        countryId: "",
+        city: "",
+        email: "",
+        website: "",
+        linkedin: "",
+        twitter: "",
+        university: "",
+        department: "",
+        experienceId: "",
+        companyId: "",
+        biography: "",
+        profileTags: [],
+        skillId: "",
+        callingId: "",
+        updatedAt: "",
+      },
+      universities: [],
+      newDepartments: [],
+      departments: [],
+      tags: [
+        { id: 1, name: "girisimci" },
+        { id: 2, name: "mentor" },
+        { id: 3, name: "yatirimci" },
+      ],
+      countries: [{ id: 1, name: "Türkiye" }],
+
+      experiences: [
+        { id: 1, name: "Deneyimli" },
+        { id: 2, name: "Deneyimsiz" },
+      ],
+
+      companies: [{ id: 1, name: "STARTWORK" }],
+    };
+  },
+  methods: {
+    saveProfile() {
+      //this.profile.school = this.profile.school.name;
+      console.log("save profile register bilgiler --->", { ...this.profile });
+      this.$store.dispatch("registerProfile", { ...this.profile }).then(
+        (result) => {
+          this.$alertify.alertWithTitle("Kayıt Bilgisi", result, () =>
+            this.$alertify.success("Profil Kayıt işlemi başarılı")
+          );
+        },
+        (error) => {
+          this.$alertify.alertWithTitle("Kayıt Bilgisi", error, () =>
+            this.$alertify.error("Kayıt işlemi başarısız")
+          );
+        }
+      );
+    },
+
+    universitySelected() {
+      this.newDepartments = this.departments.filter(
+        (p) => p.uni_id == this.profile.university
+      );
+    },
+  },
+  created() {
+    this.$store.dispatch("getUniversities");
+
+    this.$store.dispatch("getCities").then((res) => {
+      console.log(res);
+    });
+
+    this.$store.dispatch("getProfiles").then((res) => {
+      this.profile.id = res.data[0].id;
+      this.profile.nameSurname = res.data[0].nameSurname;
+      this.profile.membershipDate = res.data[0].createdAt;
+      this.profile.username = res.data[0].username;
+      this.profile.city = res.data[0].city;
+      this.profile.countryId = res.data[0].countryId;
+      this.profile.email = res.data[0].email;
+      this.profile.website = res.data[0].website;
+      this.profile.linkedin = res.data[0].linkedin;
+      this.profile.twitter = res.data[0].twitter;
+      this.profile.university = res.data[0].university;
+      this.profile.department = res.data[0].department;
+      this.profile.experienceId = res.data[0].experienceId;
+      this.profile.companyId = res.data[0].companyId;
+      this.profile.biography = res.data[0].biography;
+      this.profile.profileTags = res.data[0].profileTags;
+      this.profile.skillId = res.data[0].skillId;
+      this.profile.callingId = res.data[0].callingId;
+
+      console.log("deneme", res.data);
+    });
+    this.$store.dispatch("getDepartments").then((res) => {
+      this.departments = res.data;
+    });
+  },
+  computed: {
+    ...mapGetters([
+      "getCities",
+      "getUniversities",
+      "getDepartments",
+      "getProfiles",
+    ]),
+  },
+};
 </script>
 <style scoped>
 .home {
@@ -295,8 +442,8 @@
   color: rgb(212, 212, 207);
 }
 
- label   {
- text-align: left;
+label {
+  text-align: left;
   color: rgb(159, 167, 158);
   margin-inline-start: 10px;
 }

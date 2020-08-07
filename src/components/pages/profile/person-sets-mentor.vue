@@ -7,7 +7,7 @@
             <div class="col form-home">
               <h3 class="left-part-title">Profil</h3>
               <p class="left-part-altTitle">Profil Bilgilerini Gir</p>
-              <hr style="width:110%;  margin-right:10px ;" />
+              <hr style="width:105.5%;" />
             </div>
 
             <form class="form">
@@ -317,6 +317,18 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+      mentor:{
+
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .home {
