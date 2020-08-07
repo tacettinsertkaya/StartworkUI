@@ -58,13 +58,8 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ŞEHİR</label>
-                  {{profile.city}}
-                  <select
-                    class="custom-select"
-                    required
-                    v-model="profile.city"
-                  >
-                    <option value>Şehir Seçiniz</option>
+                  <select class="custom-select" required v-model="profile.city">
+                    <option value=0>Şehir Seçiniz</option>
                     <option
                       :value="city.id"
                       :key="'city'+index"
@@ -92,6 +87,7 @@
                 <div class="form-group col-md-6">
                   <label for="inputEmail4">E POSTA</label>
                   <input
+                    disabled
                     type="email"
                     class="form-control"
                     id="inputEmail4"
@@ -139,11 +135,12 @@
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">BÖLÜM</label>
                   <select class="custom-select" required v-model="profile.department">
-                    <option value>Bölüm Seçiniz</option>
+                    <option value="">Bölüm Seçiniz</option>
+                 
                     <option
                       :value="department.id"
                       :key="'department' +index"
-                      v-for="(department , index) in newDepartments"
+                      v-for="(department , index) in   newDepartments == 0 ? departments:newDepartments"
                     >{{department.name}}</option>
                   </select>
                   <div class="invalid-feedback">Example invalid custom select feedback</div>
@@ -171,8 +168,8 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">DENEYİM VEYA POZİSYON</label>
-                  <select class="custom-select" required v-model="profile.experience">
-                    <option value>Deneyim Veya Pozisyonu Seçiniz</option>
+                  <select class="custom-select" required v-model="profile.experienceId">
+                    <option value="">Deneyim Veya Pozisyonu Seçiniz</option>
                     <option
                       :value="experience.id"
                       :key="'experience'+index"
@@ -185,10 +182,11 @@
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ŞİRKET VEYA STARTUP</label>
                   <select class="custom-select" required v-model="profile.companyId">
-                    <option value="">Şirket Veya Startup Seçiniz</option>
-                    <option  :value="company.id" 
-                    :key="'company'+index"
-                    v-for="(company,index) in companies"
+                    <option value="0">Şirket Veya Startup Seçiniz</option>
+                    <option
+                      :value="company.id"
+                      :key="'company'+index"
+                      v-for="(company,index) in companies"
                     >{{company.name}}</option>
                   </select>
                   <div class="invalid-feedback">Lütfen Bir Şirket Veya Startup Seçiniz</div>
@@ -231,24 +229,26 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">YETENEKLER</label>
-                  <select class="custom-select" required v-model="profile.skill">
-                    <option value>Yetenekler Yazınız</option>
-                    <option value="1">HEALTY</option>
-                    <option value="2">SAĞLIK</option>
-                    <option value="3">MARKETİNG</option>
-                    <option value="4">FRONT-END</option>
+                  <select class="custom-select" required v-model="profile.skillId">
+                    <option value="">Yetenekler Yazınız</option>
+                    <option
+                      :value="skill.id"
+                      :key="'skills'+index"
+                      v-for="(skill,index) in skills"
+                    >{{skill.name}}</option>
                   </select>
                   <div class="invalid-feedback">Lütfen Bir Yeteneğini Seçiniz</div>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ARIYOR</label>
-                  <select class="custom-select" required v-model="profile.calling">
-                    <option value>Yazınız</option>
-                    <option value="1">HEALTY</option>
-                    <option value="2">SAĞLIK</option>
-                    <option value="3">MARKETİNG</option>
-                    <option value="4">FRONT-END</option>
+                  <select class="custom-select" required v-model="profile.callingId">
+                    <option value="">Yazınız</option>
+                    <option
+                      :value="call.id"
+                      :key="'calling'+index"
+                      v-for="(call,index) in calling"
+                    >{{call.name}}</option>
                   </select>
                   <div class="invalid-feedback">Lütfen Aradığınız Seçiniz</div>
                 </div>
@@ -307,10 +307,19 @@ export default {
         { id: 3, name: "yatirimci" },
       ],
       countries: [{ id: 1, name: "Türkiye" }],
+      experiences: [{ id: 1, name: "FOUNDER" }],
+      skills: [
+        { id: 1, name: "HEALTY" },
+        { id: 2, name: "SAĞLIK" },
+        { id: 3, name: "MARKETING" },
+        { id: 4, name: "FRONT-END" },
+      ],
 
-      experiences: [
-        { id: 1, name: "Deneyimli" },
-        { id: 2, name: "Deneyimsiz" },
+      calling: [
+        { id: 1, name: "HEALTY" },
+        { id: 2, name: "SAĞLIK" },
+        { id: 3, name: "MARKETING" },
+        { id: 4, name: "FRONT-END" },
       ],
 
       companies: [{ id: 1, name: "STARTWORK" }],
@@ -322,7 +331,7 @@ export default {
       console.log("save profile register bilgiler --->", { ...this.profile });
       this.$store.dispatch("registerProfile", { ...this.profile }).then(
         (result) => {
-          this.$alertify.alertWithTitle("Kayıt Bilgisi", result, () =>
+          this.$alertify.alertWithTitle("Kayıt Bilgisi", result.data, () =>
             this.$alertify.success("Profil Kayıt işlemi başarılı")
           );
         },
@@ -346,32 +355,34 @@ export default {
     this.$store.dispatch("getCities").then((res) => {
       console.log(res);
     });
-
-    this.$store.dispatch("getProfiles").then((res) => {
-      this.profile.id = res.data[0].id;
-      this.profile.nameSurname = res.data[0].nameSurname;
-      this.profile.membershipDate = res.data[0].createdAt;
-      this.profile.username = res.data[0].username;
-      this.profile.city = res.data[0].city;
-      this.profile.countryId = res.data[0].countryId;
-      this.profile.email = res.data[0].email;
-      this.profile.website = res.data[0].website;
-      this.profile.linkedin = res.data[0].linkedin;
-      this.profile.twitter = res.data[0].twitter;
-      this.profile.university = res.data[0].university;
-      this.profile.department = res.data[0].department;
-      this.profile.experienceId = res.data[0].experienceId;
-      this.profile.companyId = res.data[0].companyId;
-      this.profile.biography = res.data[0].biography;
-      this.profile.profileTags = res.data[0].profileTags;
-      this.profile.skillId = res.data[0].skillId;
-      this.profile.callingId = res.data[0].callingId;
-
-      console.log("deneme", res.data);
-    });
-    this.$store.dispatch("getDepartments").then((res) => {
+      this.$store.dispatch("getDepartments").then((res) => {
       this.departments = res.data;
     });
+
+    this.$store.dispatch("getProfiles").then((res) => {
+      console.log("deneme", res.data.department.id);
+      this.profile.id = res.data.id;
+      this.profile.nameSurname = res.data.nameSurname;
+      this.profile.membershipDate = res.data.createdAt;
+      this.profile.username = res.data.username;
+      this.profile.city = res.data.city.id;
+      this.profile.countryId = res.data.countryId;
+      this.profile.email = res.data.email;
+      this.profile.website = res.data.website;
+      this.profile.linkedin = res.data.linkedin;
+      this.profile.twitter = res.data.twitter;
+      this.profile.university = res.data.university.id;
+      this.profile.department = res.data.department.id;
+      this.profile.experienceId = res.data.experienceId;
+      this.profile.companyId = res.data.companyId;
+      this.profile.biography = res.data.biography;
+      this.profile.profileTags = res.data.profileTags;
+      this.profile.skillId = res.data.skillId;
+      this.profile.callingId = res.data.callingId;
+
+      console.log("gelen data ", res.data);
+    });
+  
   },
   computed: {
     ...mapGetters([
