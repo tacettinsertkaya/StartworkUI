@@ -2,8 +2,9 @@ import ProfileService from "../../services/profile-service";
 
 export const state = {
   cities: [],
-  schools: [],
-  departments: []
+  universities: [],
+  departments: [],
+  profiles:[]
 };
 
 const getters = {
@@ -11,12 +12,16 @@ const getters = {
     return state.cities;
   },
 
-  getSchools(state){
-      return state.schools;
+  getUniversities(state){
+      return state.universities;
   },
 
   getDepartments(state){
       return state.departments;
+  },
+
+  getProfiles(state){
+    return state.profiles;
   }
 };
 
@@ -25,15 +30,42 @@ const mutations = {
     state.cities.push(city);
   }
 ,
-  updateSchoolsList(state,school){
-    state.schools.push(school);
+  updateUniversitiesList(state,university){
+    state.universities.push(university);
   },
   updateDepartmentsList(state,department){
       state.departments.push(department);
+  },
+
+  updateProfilesList(state,profile){
+    state.profiles.push(profile);
+  },
+
+  saveRegister(state,profile){
+    state.profiles.push(profile);
   }
 };
 
 export const actions = {
+
+ // register profile
+ registerProfile({ commit }, profile) {
+   console.log("register profile ---->:",profile);
+  return ProfileService.registerProfile(profile)
+  .then(
+    response => {
+        commit("saveRegister");
+      console.log("resgister profile --> :",response);
+      return response;
+    },
+    error => {
+      //commit("registerFailure");
+      return response;
+    }
+  );
+},
+
+
   async getCities({ commit }) {
     return await ProfileService.getCities()
     .then(response => {
@@ -45,13 +77,13 @@ export const actions = {
     });
   },
 
-  async getSchools({commit}){
-      return await ProfileService.getSchools()
+  async getUniversities({commit}){
+      return await ProfileService.getUniversities()
       .then(
           response =>{
             let data = response.data;
               for(let key in data){
-                  commit("updateSchoolsList",data[key])
+                  commit("updateUniversitiesList",data[key])
               }
               return response;
           }
@@ -68,6 +100,19 @@ export const actions = {
             return response;
         }
     )
+},
+
+async getProfiles({commit}){
+  return await ProfileService.getProfiles()
+  .then(
+      response =>{
+        let data = response.data;
+          for(let key in data){
+              commit("updateProfilesList",data[key])
+          }
+          return response;
+      }
+  )
 },
 
 };

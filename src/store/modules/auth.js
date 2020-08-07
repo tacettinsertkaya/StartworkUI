@@ -68,23 +68,7 @@ export const mutations = {
 };
 
 export const actions = {
-  /*
-  login1({ commit, dispatch, state }, authData) {
-    let authLink = ApiURL.studentLogin;
-    console.log("authData", authData);
-    console.log("this.httpClient", httpClient);
-    return httpClient
-      .post(authLink, authData)
-      .then(response => {
-        console.log("response", response);
-        commit("setUserInfo", response);
-        return response;
-      })
-      .catch(response => {
-        return response;
-      });
-  }
-  */
+  
 
   login({ commit }, user) {
     return AuthService.login(user).then(
