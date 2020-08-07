@@ -18,7 +18,7 @@ class ProfileService {
       department: profile.department,
       university: profile.university,
       experienceId: profile.experienceId,
-      company: profile.company,
+      companyId: profile.companyId,
       biography: profile.biography,
       profileTags: profile.profileTags,
       skillId: profile.skillId,
@@ -28,6 +28,7 @@ class ProfileService {
 
   async getProfiles() {
     return await httpClient.get(API_URL + "get-profile").then(response => {
+      console.log("profile-service --->:",response);
       return response;
     });
   }
