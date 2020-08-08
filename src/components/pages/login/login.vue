@@ -214,13 +214,18 @@ export default {
       }
       this.$store.dispatch("login", { ...this.user }).then(
         (result) => {
-          console.log("login result --->:", result[0]);
           if (result[0].email) {
             this.$alertify.success("Giriş işlemi başarılı");
 
             this.$router.push("/dashboard");
           } else {
-            this.$alertify.warning("Giriş işlemi başarısız");
+            this.$alertify.alertWithTitle(
+              "Giriş İşlem Bilgisi",
+              result[0],
+              () => this.$alertify.warning("Giriş işlemi başarısız")
+            );
+            this.user.email = "";
+            this.user.password = "";
           }
         },
         (err) => {
