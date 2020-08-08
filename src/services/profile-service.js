@@ -26,8 +26,9 @@ class ProfileService {
     });
   }
 
-  async getProfiles() {
-    return await httpClient.get(API_URL + "get-profile").then(response => {
+  async getProfiles(userId) {
+    console.log("gelen userId-------->:",userId);
+    return await httpClient.get(API_URL + "get-profile/"+userId).then(response => {
       console.log("profile-service getProfiles  --->:",response.data);
       return response;
     });
@@ -40,7 +41,7 @@ class ProfileService {
   }
 
   async getUniversities() {
-    return await httpClient.get(API_URL + "schools").then(response => {
+    return await httpClient.get(API_URL + "universities").then(response => {
       return response;
     });
   }

@@ -10,16 +10,25 @@ class AuthService {
         password: user.password
       })
       .then(response => {
+
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
+     
+         
+         
+          let user = JSON.stringify(response.data);
+          localStorage.setItem("user", user);
+         
         }
-        //console.log("response data ---> :", response.data);
+        
         return response;
       });
   }
 
   logout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("userData");
+
     return true;
   }
 

@@ -102,8 +102,8 @@ export const actions = {
     )
 },
 
-async getProfiles({commit}){
-  return await ProfileService.getProfiles()
+async getProfiles({commit},userId){
+  return await ProfileService.getProfiles(userId)
   .then(
       response =>{
         let data = response.data;
