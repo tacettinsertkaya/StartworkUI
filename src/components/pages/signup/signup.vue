@@ -266,7 +266,6 @@ export default {
           );
         },
         (error) => {
-          console.log("save User -----> : ", result.error);
           this.$alertify.alertWithTitle("E-posta Bilgisi", error.data, () =>
             this.$alertify.error("Kayıt işlemi başarısız")
           );
