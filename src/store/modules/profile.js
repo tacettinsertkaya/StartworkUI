@@ -110,6 +110,8 @@ async getProfiles({commit}){
           for(let key in data){
               commit("updateProfilesList",data[key])
           }
+
+          console.log("profile getProfiles --->:",data);
           return response;
       }
   )

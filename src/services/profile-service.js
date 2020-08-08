@@ -28,7 +28,7 @@ class ProfileService {
 
   async getProfiles() {
     return await httpClient.get(API_URL + "get-profile").then(response => {
-      console.log("profile-service --->:",response);
+      console.log("profile-service getProfiles  --->:",response.data);
       return response;
     });
   }

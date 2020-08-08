@@ -14,17 +14,24 @@
                 <div class="form-group col-md-6">
                   <label for="inputName">ADI SOYADI</label>
                   <input
+                     @blur="$v.profile.nameSurname"
                     type="name"
                     class="form-control"
                     id="inputName"
                     v-model="profile.nameSurname"
                     placeholder="Ad ve Soyad"
                   />
+                    <small
+                            v-if="saveButtonClicked && $v.profile.nameSurname.$error &&  !$v.profile.nameSurname.required"
+                            class="form-text text-danger mt-1"
+                          >Bu Alan Zorunludur..!
+                    </small>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="inputPassword">ÜYELİK TARİHİ</label>
                   <input
+                    disabled
                     type="text"
                     class="form-control"
                     id="inputCalender"
@@ -42,6 +49,7 @@
                     </div>
                     <!-- input içindeki class içine  is-valid -->
                     <input
+                      @blur="$v.profile.username"
                       type="text"
                       class="form-control"
                       id="validationServerUsername"
@@ -50,6 +58,14 @@
                       aria-describedby="inputGroupPrepend3"
                       required
                     />
+                    <br>
+                     <br>
+                     <small 
+                            v-if="saveButtonClicked && $v.profile.username.$error &&  !$v.profile.username.required"
+                            class="form-text text-danger mt-1 " style="margin-left:30%"
+                          >Bu Alan Zorunludur..!
+                    </small>
+                    
                     <div class="invalid-feedback">Lütfen Bir Kullanıcı Adı Giriniz!.</div>
                   </div>
                 </div>
@@ -58,28 +74,30 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ŞEHİR</label>
-                  <select class="custom-select" required v-model="profile.city">
+                  <select class="custom-select"  v-model="profile.city"  >
                     <option value=0>Şehir Seçiniz</option>
                     <option
+                   
                       :value="city.id"
                       :key="'city'+index"
                       v-for="(city,index) in getCities"
                     >{{city.name}}</option>
+
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <div class="invalid-feedback">Lütfen Bir Şehir Seçiniz!</div>
                 </div>
 
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ÜLKE</label>
                   <select class="custom-select" required v-model="profile.countryId">
-                    <option value>Ülke Seçiniz</option>
+                    <option value=0>Ülke Seçiniz</option>
                     <option
                       :value="country.id"
                       :key="'country'+index"
                       v-for="(country,index) in countries"
                     >{{country.name}}</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <div class="invalid-feedback">Lütfen Bir Ülke Seçiniz!</div>
                 </div>
               </div>
 
@@ -135,7 +153,7 @@
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">BÖLÜM</label>
                   <select class="custom-select" required v-model="profile.department">
-                    <option value="">Bölüm Seçiniz</option>
+                    <option value=0>Bölüm Seçiniz</option>
                  
                     <option
                       :value="department.id"
@@ -154,7 +172,7 @@
                     v-model="profile.university"
                     @change="universitySelected"
                   >
-                    <option value>Okul Seçiniz</option>
+                    <option value=0>Okul Seçiniz</option>
                     <option
                       :value="university.id"
                       :key="'university'+index"
@@ -169,7 +187,7 @@
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">DENEYİM VEYA POZİSYON</label>
                   <select class="custom-select" required v-model="profile.experienceId">
-                    <option value="">Deneyim Veya Pozisyonu Seçiniz</option>
+                    <option value=0>Deneyim Veya Pozisyonu Seçiniz</option>
                     <option
                       :value="experience.id"
                       :key="'experience'+index"
@@ -230,7 +248,7 @@
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">YETENEKLER</label>
                   <select class="custom-select" required v-model="profile.skillId">
-                    <option value="">Yetenekler Yazınız</option>
+                    <option value=0>Yetenekler Yazınız</option>
                     <option
                       :value="skill.id"
                       :key="'skills'+index"
@@ -243,7 +261,7 @@
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ARIYOR</label>
                   <select class="custom-select" required v-model="profile.callingId">
-                    <option value="">Yazınız</option>
+                    <option value=0>Yazınız</option>
                     <option
                       :value="call.id"
                       :key="'calling'+index"
@@ -273,6 +291,13 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueAlertify from "vue-alertify";
+Vue.use(VueAlertify);
+import {
+  required,
+
+} from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 export default {
   data() {
@@ -298,6 +323,7 @@ export default {
         callingId: "",
         updatedAt: "",
       },
+        saveButtonClicked: false,
       universities: [],
       newDepartments: [],
       departments: [],
@@ -327,8 +353,15 @@ export default {
   },
   methods: {
     saveProfile() {
+
+      this.saveButtonClicked = true;
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
+      }
       //this.profile.school = this.profile.school.name;
       console.log("save profile register bilgiler --->", { ...this.profile });
+
       this.$store.dispatch("registerProfile", { ...this.profile }).then(
         (result) => {
           this.$alertify.alertWithTitle("Kayıt Bilgisi", result.data, () =>
@@ -341,6 +374,8 @@ export default {
           );
         }
       );
+
+ 
     },
 
     universitySelected() {
@@ -353,26 +388,25 @@ export default {
     this.$store.dispatch("getUniversities");
 
     this.$store.dispatch("getCities").then((res) => {
-      console.log(res);
+    
     });
       this.$store.dispatch("getDepartments").then((res) => {
       this.departments = res.data;
     });
 
     this.$store.dispatch("getProfiles").then((res) => {
-      console.log("deneme", res.data.department.id);
       this.profile.id = res.data.id;
       this.profile.nameSurname = res.data.nameSurname;
       this.profile.membershipDate = res.data.createdAt;
       this.profile.username = res.data.username;
-      this.profile.city = res.data.city.id;
+      this.profile.city =  res.data.city == null ?  0 : res.data.city.id;
       this.profile.countryId = res.data.countryId;
       this.profile.email = res.data.email;
       this.profile.website = res.data.website;
       this.profile.linkedin = res.data.linkedin;
       this.profile.twitter = res.data.twitter;
-      this.profile.university = res.data.university.id;
-      this.profile.department = res.data.department.id;
+      this.profile.university = res.data.university == null ? 0 :res.data.university.id;
+      this.profile.department = res.data.department == null ? 0 : res.data.department.id;
       this.profile.experienceId = res.data.experienceId;
       this.profile.companyId = res.data.companyId;
       this.profile.biography = res.data.biography;
@@ -380,7 +414,6 @@ export default {
       this.profile.skillId = res.data.skillId;
       this.profile.callingId = res.data.callingId;
 
-      console.log("gelen data ", res.data);
     });
   
   },
@@ -391,6 +424,18 @@ export default {
       "getDepartments",
       "getProfiles",
     ]),
+  },
+
+   validations: {
+    profile: {
+      nameSurname: {
+        required,
+      },
+      username:{
+        required,
+      }
+      
+    },
   },
 };
 </script>
