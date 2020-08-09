@@ -27,7 +27,7 @@ class ProfileService {
     });
   }
 
-<<<<<<< HEAD
+
   registerMentor(mentor) {
     return httpClient.post(API_MENTOR_URL + "save-mentor", {
       id: mentor.id,
