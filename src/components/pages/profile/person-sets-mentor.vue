@@ -10,11 +10,11 @@
               <hr style="width:105.5%;" />
             </div>
 
-            <form class="form">
+            <form class="form" @submit.prevent="saveMentor">
               <div class="form-row">
                 <div class="form-group col-md-10">
                   <p style="color: rgb(184, 174, 161);margin-top: 10px;">
-                    MENTOR MÜSÜSÜNÜZ ? ( BU
+                    MENTOR MÜSÜNÜZ ? ( BU
                     BİLGİLER EŞLEŞTİRMELERDE KULLANILACAKTIR )
                   </p>
                 </div>
@@ -25,8 +25,10 @@
                   <div class="col-md-4">
                     <div class="form-check">
                       <input
-                        type="checkbox"
+                        type="radio"
                         class="form-check-input"
+                        value="true"
+                        v-model="mentor.isInvesment"
                         name="checkbox"
                         id="exampleCheck2"
                       />
@@ -37,28 +39,38 @@
                   <div class="col-md-4">
                     <div class="form-check">
                       <input
-                        type="checkbox"
+                        type="radio"
                         class="form-check-input"
                         name="checkbox"
-                        id="exampleCheck2"
+                        value="false"
+                        v-model="mentor.isInvesment"
+                        id="exampleCheck1"
                       />
                       <label class="form-check-label" for="exampleCheck1">Hayır</label>
                     </div>
                   </div>
                 </div>
+
+                <small
+                  v-if="saveButtonClicked && $v.mentor.isInvesment.$error &&  !$v.mentor.isInvesment.required"
+                  class="form-text text-danger mt-1"
+                >Bu Alan Zorunludur..!</small>
               </div>
 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">PORTFÖY EKLE</label>
-                  <select class="custom-select" required>
+                  <select v-model="mentor.portfoyId" class="custom-select" required>
                     <option value>Yetenekler Yazınız</option>
-                    <option value="healty">STARTUP ADI</option>
-                    <option value="saglik">SAĞLIK</option>
-                    <option value="marketing">MARKETİNG</option>
-                    <option value="front-end">FRONT-END</option>
+                    <option value="1">STARTUP ADI</option>
+                    <option value="2">SAĞLIK</option>
+                    <option value="3">MARKETİNG</option>
+                    <option value="4">FRONT-END</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <small
+                    v-if="saveButtonClicked && $v.mentor.portfoyId.$error &&  !$v.mentor.portfoyId.required"
+                    class="form-text text-danger mt-1"
+                  >Bu Alan Zorunludur..!</small>
                 </div>
               </div>
 
@@ -74,27 +86,32 @@
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
+                          name="radio3"
+                          value="true"
+                          v-model="mentor.isStatus"
                         />
-                        <label class="form-check-label" for="exampleCheck2">Evet</label>
+                        <label class="form-check-label">Evet</label>
                       </div>
                     </div>
 
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
+                          value="false"
+                          v-model="mentor.isStatus"
                         />
-                        <label class="form-check-label" for="exampleCheck1">Hayır</label>
+                        <label class="form-check-label">Hayır</label>
                       </div>
                     </div>
                   </div>
+                  <small
+                    v-if="saveButtonClicked && $v.mentor.isStatus.$error &&  !$v.mentor.isStatus.required"
+                    class="form-text text-danger mt-1"
+                  >Bu Alan Zorunludur..!</small>
                 </div>
               </div>
 
@@ -110,41 +127,48 @@
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
+                          value="true"
+                          v-model="mentor.isSector"
                         />
-                        <label class="form-check-label" for="exampleCheck2">Evet</label>
+                        <label class="form-check-label">Evet</label>
                       </div>
                     </div>
 
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
+                          value="false"
+                          v-model="mentor.isSector"
                         />
-                        <label class="form-check-label" for="exampleCheck1">Hayır</label>
+                        <label class="form-check-label">Hayır</label>
                       </div>
                     </div>
                   </div>
+                  <small
+                    v-if="saveButtonClicked && $v.mentor.isSector.$error &&  !$v.mentor.isSector.required"
+                    class="form-text text-danger mt-1"
+                  >Bu Alan Zorunludur..!</small>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="validationServerUsername">ODAK SEKTÖR</label>
-                  <select class="custom-select" required>
+                  <select v-model="mentor.destinationSectorId" class="custom-select" required>
                     <option value>Yazınız</option>
-                    <option value="healty">HEALTY</option>
-                    <option value="saglik">SAĞLIK</option>
-                    <option value="marketing">MARKETİNG</option>
-                    <option value="front-end">FRONT-END</option>
+                    <option value="1">HEALTY</option>
+                    <option value="2">SAĞLIK</option>
+                    <option value="3">MARKETİNG</option>
+                    <option value="4">FRONT-END</option>
                   </select>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
+                  <small
+                    v-if="saveButtonClicked && $v.mentor.destinationSectorId.$error &&  !$v.mentor.destinationSectorId.required"
+                    class="form-text text-danger mt-1"
+                  >Bu Alan Zorunludur..!</small>
                 </div>
               </div>
 
@@ -160,151 +184,64 @@
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
+                          value="true"
+                          v-model="mentor.isInvestmentStep"
                         />
-                        <label class="form-check-label" for="exampleCheck2">Evet</label>
+                        <label class="form-check-label">Evet</label>
                       </div>
                     </div>
 
                     <div class="col-md-4">
                       <div class="form-check">
                         <input
-                          type="checkbox"
+                          type="radio"
                           class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
+                          value="false"
+                          v-model="mentor.isInvestmentStep"
                         />
-                        <label class="form-check-label" for="exampleCheck1">Hayır</label>
+                        <label class="form-check-label">Hayır</label>
                       </div>
                     </div>
                   </div>
+                  <small
+                    v-if="saveButtonClicked && $v.mentor.isInvestmentStep.$error &&  !$v.mentor.isInvestmentStep.required"
+                    class="form-text text-danger mt-1"
+                  >Bu Alan Zorunludur..!</small>
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="row form-check-group">
                   <p
-                    style="color: rgb(184, 174, 161);margin-top: 10px;margin-left: 10PX;"
+                    style="color: rgb(184, 174, 161);margin-top: 10px;margin-left: 10px;"
                   >MENTORLÜK YATIRIM AŞAMASI TERCİHİ</p>
                 </div>
 
-                <div class="form-group">
-                  <div class="row form-check-group">
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck2">Ön Tohum</label>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck1">Seri B</label>
-                      </div>
+                <div class="row form-check-group">
+                  <div class="col-md-4" v-for="(i,index) in investmentSteps" :key="'t'+index">
+                    <div class="form-check">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        v-model="mentor.investmentStepIds"
+                        :value="i.id"
+                      />
+                      <label class="form-check-label">{{i.name}}</label>
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="row form-check-group">
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck2">Tohum</label>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck1">Seri C</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row form-check-group">
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck2">Seri A Öncesi</label>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck1">Seri D</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row form-check-group">
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck2">Seri A</label>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <div class="form-check">
-                        <input
-                          type="checkbox"
-                          class="form-check-input"
-                          name="checkbox"
-                          id="exampleCheck2"
-                        />
-                        <label class="form-check-label" for="exampleCheck1">Seri E</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <small
+                  v-if="saveButtonClicked && $v.mentor.investmentStepIds.$error &&  !$v.mentor.investmentStepIds.required"
+                  class="form-text text-danger mt-1"
+                >Bu Alan Zorunludur..!</small>
               </div>
 
               <hr style="margin-top: 20%;" />
               <div class="row">
                 <div class="col-md-3">
-                  <button type="submit" class="btn btn-success save">Kaydet</button>
+                  <button type="submit" class="btn btn-success save" @click="saveMentor">Kaydet</button>
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3"></div>
@@ -319,15 +256,102 @@
 </template>
 
 <script>
-export default {
-  data(){
-    return {
-      mentor:{
+import Vue from "vue";
+import VueAlertify from "vue-alertify";
+Vue.use(VueAlertify);
+import { required } from "vuelidate/lib/validators";
+import { mapGetters } from "vuex";
 
+export default {
+  data() {
+    return {
+      mentor: {
+        id: 0,
+        isInvesment: "",
+        portfoyId: 0,
+        isStatus: "",
+        isSector: "",
+        destinationSectorId: 0,
+        isInvestmentStep: "",
+        investmentStepIds: [],
+        updatedAt: "",
+      },
+      saveButtonClicked: false,
+      investmentSteps: [
+        { id: 1, name: "Ön Tohum" },
+        { id: 2, name: "Seri B" },
+        { id: 3, name: "Tohum" },
+        { id: 4, name: "Seri C" },
+        { id: 5, name: "Seri A Öncesi" },
+        { id: 6, name: "Seri D" },
+        { id: 7, name: "Seri A" },
+        { id: 8, name: "Seri E" },
+      ],
+    };
+  },
+  methods: {
+    saveMentor() {
+      this.saveButtonClicked = true;
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        return;
       }
-    }
-  }
-}
+      //this.profile.school = this.profile.school.name;
+      console.log("save mentor register bilgiler --->", { ...this.mentor });
+
+      this.$store.dispatch("registerMentor", { ...this.mentor }).then(
+        (result) => {
+          this.$alertify.success(" Kayıt işlemi başarılı");
+        },
+        (error) => {
+          this.$alertify.error("Kayıt işlemi başarısız");
+        }
+      );
+    },
+  },
+  created() {
+    this.$store.dispatch("getMentor").then((res) => {
+      this.mentor.id = res.data.id;
+      this.mentor.isInvesment = res.data.isInvesment;
+      this.mentor.portfoyId = res.data.portfoyId;
+      this.mentor.isStatus = res.data.isStatus;
+      this.mentor.isSector = res.data.isSector;
+      this.mentor.destinationSectorId = res.data.destinationSectorId;
+      this.mentor.isInvestmentStep = res.data.isInvestmentStep;
+      this.mentor.investmentStepIds = res.data.investmentStepIds;
+      this.mentor.updatedAt = res.data.updatedAt;
+    });
+  },
+  computed: {
+    ...mapGetters(["getMentor"]),
+  },
+
+  validations: {
+    mentor: {
+      isInvesment: {
+        required,
+      },
+      portfoyId: {
+        required,
+      },
+      isStatus: {
+        required,
+      },
+      isSector: {
+        required,
+      },
+      destinationSectorId: {
+        required,
+      },
+      isInvestmentStep: {
+        required,
+      },
+      investmentStepIds: {
+        required,
+      },
+    },
+  },
+};
 </script>
 
 <style scoped>

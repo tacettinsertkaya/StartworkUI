@@ -14,7 +14,7 @@
               <div class="form-row">
                 <div class="form-group col-md-10">
                   <p style="color: rgb(184, 174, 161);margin-top: 10px;">
-                    YATIRIMCI MÜSÜSÜNÜZ ? ( BU
+                    YATIRIMCI MISINIZ ? ( BU
                     BİLGİLER EŞLEŞTİRMELERDE KULLANILACAKTIR )
                   </p>
                 </div>
