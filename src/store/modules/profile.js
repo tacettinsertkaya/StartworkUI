@@ -5,7 +5,6 @@ export const state = {
   universities: [],
   departments: [],
   profiles: [],
-  mentors: []
 };
 
 const getters = {
@@ -24,9 +23,7 @@ const getters = {
   getProfiles(state) {
     return state.profiles;
   },
-  getMentor(state) {
-    return state.mentors;
-  }
+ 
 };
 
 const mutations = {
@@ -48,13 +45,6 @@ const mutations = {
     state.profiles.push(profile);
   },
 
-  updateMentorsList(state, mentor) {
-    state.mentors.push(mentor);
-  },
-
-  saveRegister(state, mentor) {
-    state.mentors.push(mentor);
-  }
 };
 
 export const actions = {
@@ -74,20 +64,7 @@ export const actions = {
     );
   },
 
-  registerMentor({ commit }, mentor) {
-    console.log("register mentor ---->:", mentor);
-    return ProfileService.registerMentor(mentor).then(
-      response => {
-        commit("saveMentor");
-        console.log("resgister mentor --> :", response);
-        return response;
-      },
-      error => {
-        //commit("registerFailure");
-        return response;
-      }
-    );
-  },
+ 
 
   async getCities({ commit }) {
     return await ProfileService.getCities().then(response => {
@@ -139,17 +116,7 @@ export const actions = {
     });
   },
 
-  async getMentors({ commit }) {
-    return await ProfileService.getMentor().then(response => {
-      let data = response.data;
-      for (let key in data) {
-        commit("updateMentorsList", data[key]);
-      }
-
-      console.log("profile mentors --->:", data);
-      return response;
-    });
-  }
+ 
 };
 
 export default {
