@@ -99,11 +99,50 @@ export const actions = {
     });
   },
 
+<<<<<<< HEAD
   async getUniversities({ commit }) {
     return await ProfileService.getUniversities().then(response => {
       let data = response.data;
       for (let key in data) {
         commit("updateUniversitiesList", data[key]);
+=======
+  async getUniversities({commit}){
+      return await ProfileService.getUniversities()
+      .then(
+          response =>{
+            let data = response.data;
+              for(let key in data){
+                  commit("updateUniversitiesList",data[key])
+              }
+              return response;
+          }
+      )
+  },
+  async getDepartments({commit}){
+    return await ProfileService.getDepartments()
+    .then(
+        response =>{
+          let data = response.data;
+            for(let key in data){
+                commit("updateDepartmentsList",data[key])
+            }
+            return response;
+        }
+    )
+},
+
+async getProfiles({commit},userId){
+  return await ProfileService.getProfiles(userId)
+  .then(
+      response =>{
+        let data = response.data;
+          for(let key in data){
+              commit("updateProfilesList",data[key])
+          }
+
+          console.log("profile getProfiles --->:",data);
+          return response;
+
       }
       return response;
     });
@@ -118,17 +157,6 @@ export const actions = {
     });
   },
 
-  async getProfiles({ commit }) {
-    return await ProfileService.getProfiles().then(response => {
-      let data = response.data;
-      for (let key in data) {
-        commit("updateProfilesList", data[key]);
-      }
-
-      console.log("profile getProfiles --->:", data);
-      return response;
-    });
-  },
   async getMentors({ commit }) {
     return await ProfileService.getMentor().then(response => {
       let data = response.data;

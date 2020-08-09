@@ -74,7 +74,6 @@ export const actions = {
     return AuthService.login(user).then(
       response => {
         commit("loginSuccess");
-        console.log("Login user ----> :", response.data);
         return response.data;
       },
       error => {

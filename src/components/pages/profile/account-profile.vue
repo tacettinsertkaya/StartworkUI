@@ -385,6 +385,9 @@ export default {
     },
   },
   created() {
+
+    var userData = JSON.parse(localStorage.getItem("user"));
+    let userId= userData.id;
     this.$store.dispatch("getUniversities");
 
     this.$store.dispatch("getCities").then((res) => {
@@ -394,7 +397,7 @@ export default {
       this.departments = res.data;
     });
 
-    this.$store.dispatch("getProfiles").then((res) => {
+    this.$store.dispatch("getProfiles",userId).then((res) => {
       this.profile.id = res.data.id;
       this.profile.nameSurname = res.data.nameSurname;
       this.profile.membershipDate = res.data.createdAt;
@@ -413,7 +416,7 @@ export default {
       this.profile.profileTags = res.data.profileTags;
       this.profile.skillId = res.data.skillId;
       this.profile.callingId = res.data.callingId;
-
+     console.log("Gelen data ---------->:",res.data);
     });
   
   },
