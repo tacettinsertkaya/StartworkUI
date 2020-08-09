@@ -1,16 +1,16 @@
-export const state = {
+ const state = {
     
 }
 
-export const getters = {
+ const getters = {
 
 }
 
-export const mutations={
+ const mutations={
 
 }
 
-export const actions = {
+ const actions = {
 
 }
 

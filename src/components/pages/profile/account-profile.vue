@@ -388,6 +388,7 @@ export default {
 
     var userData = JSON.parse(localStorage.getItem("user"));
     let userId= userData.id;
+    
     this.$store.dispatch("getUniversities");
 
     this.$store.dispatch("getCities").then((res) => {
