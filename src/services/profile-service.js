@@ -1,6 +1,7 @@
 import httpClient from "../services/httpClient";
 
 const API_URL = "http://localhost:4000/api/profile/";
+const API_MENTOR_URL = "http://localhost:4000/api/profile/";
 
 class ProfileService {
   registerProfile(profile) {
@@ -26,12 +27,37 @@ class ProfileService {
     });
   }
 
+<<<<<<< HEAD
+  registerMentor(mentor) {
+    return httpClient.post(API_MENTOR_URL + "save-mentor", {
+      id: mentor.id,
+      isInvesment: mentor.isInvesment,
+      portfoyId: mentor.portfoyId,
+      isStatus: mentor.isStatus,
+      isSector: mentor.isSector,
+      destinationSectorId: mentor.destinationSectorId,
+      isInvestmentStep: mentor.isInvestmentStep,
+      investmentStepIds: mentor.investmentStepIds,
+      updatedAt: mentor.updatedAt
+    });
+  }
+
   async getProfiles(userId) {
     console.log("gelen userId-------->:",userId);
     return await httpClient.get(API_URL + "get-profile/"+userId).then(response => {
       console.log("profile-service getProfiles  --->:",response.data);
+
       return response;
     });
+  }
+
+  async getMentor() {
+    return await httpClient
+      .get(API_MENTOR_URL + "get-mentor")
+      .then(response => {
+        console.log("profile-mentor mentor  --->:", response.data);
+        return response;
+      });
   }
 
   async getCities() {
