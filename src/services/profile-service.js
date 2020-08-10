@@ -25,6 +25,7 @@ class ProfileService {
       skillId: profile.skillId,
       callingId: profile.callingId
     });
+    console.log("profile service profiles --->:",profile);
   }
 
 

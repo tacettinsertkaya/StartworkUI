@@ -62,14 +62,17 @@
                   <label for="validationServerUsername">PORTFÖY EKLE</label>
                   <select v-model="mentor.portfoyId" class="custom-select" required>
                     <option value=0>Yetenekler Giriniz</option>
-                    <option :value="portfolio.id" :key="'portfolio'+index" 
-                    v-for="(portfolio,index) in portfolios">{{portfolio.name}}</option>
-                   
+                    <option
+                      :value="portfolio.id"
+                      :key="'portfolio'+index"
+                      v-for="(portfolio,index) in portfolios"
+                    >{{portfolio.name}}</option>
                   </select>
                   <small
-                    v-if="saveButtonClicked && $v.mentor.portfoyId.$error &&  !$v.mentor.portfoyId.required"
+                    v-if=" $v.mentor.portfoyId.$error &&  !$v.mentor.portfoyId.required
+                     ||  !$v.mentor.portfoyId.between"
                     class="form-text text-danger mt-1"
-                  >Bu Alan Zorunludur..!</small>
+                  >Lütfen Bir Portföy Eklemek Için Seçiniz..!</small>
                 </div>
               </div>
 
@@ -108,7 +111,7 @@
                     </div>
                   </div>
                   <small
-                    v-if="saveButtonClicked && $v.mentor.isStatus.$error &&  !$v.mentor.isStatus.required"
+                    v-if="saveButtonClicked && $v.mentor.isStatus.$error &&  !$v.mentor.isStatus.required "
                     class="form-text text-danger mt-1"
                   >Bu Alan Zorunludur..!</small>
                 </div>
@@ -159,13 +162,17 @@
                   <label for="validationServerUsername">ODAK SEKTÖR</label>
                   <select v-model="mentor.destinationSectorId" class="custom-select" required>
                     <option value=0>Odak Sektörünü Giriniz</option>
-                    <option :value="sector.id" :key="'sector'+index" v-for="(sector,index) in sectors" >{{sector.name}}</option>
-                  
+                    <option
+                      :value="sector.id"
+                      :key="'sector'+index"
+                      v-for="(sector,index) in sectors"
+                    >{{sector.name}}</option>
                   </select>
                   <small
-                    v-if="saveButtonClicked && $v.mentor.destinationSectorId.$error &&  !$v.mentor.destinationSectorId.required"
+                    v-if=" $v.mentor.destinationSectorId.$error && 
+                     !$v.mentor.destinationSectorId.required || !$v.mentor.destinationSectorId.between"
                     class="form-text text-danger mt-1"
-                  >Bu Alan Zorunludur..!</small>
+                  >Lütfen Bir Odak  Alanı Seçiniz..!</small>
                 </div>
               </div>
 
@@ -238,7 +245,12 @@
               <hr style="margin-top: 20%;" />
               <div class="row">
                 <div class="col-md-3">
-                  <button type="submit" class="btn btn-success save" @click="saveMentor">Kaydet</button>
+                  <button
+                    type="submit"
+                    class="btn btn-success save"
+                    :disabled="saveEnabled"
+                    @click="saveMentor"
+                  >Kaydet</button>
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3"></div>
@@ -256,7 +268,7 @@
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
 Vue.use(VueAlertify);
-import { required } from "vuelidate/lib/validators";
+import { required ,between} from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 
 export default {
@@ -285,18 +297,18 @@ export default {
         { id: 7, name: "Seri A" },
         { id: 8, name: "Seri E" },
       ],
-      portfolios:[
-        {id:1,name:"STARTUP ADI"},
-        {id:2,name:"HEALTY"},
-        {id:3,name:"MARKETING"},
-        {id:4,name:"FRONT-END"}
+      portfolios: [
+        { id: 1, name: "STARTUP ADI" },
+        { id: 2, name: "HEALTY" },
+        { id: 3, name: "MARKETING" },
+        { id: 4, name: "FRONT-END" },
       ],
-      sectors:[
-        {id:1,name:"HEALTY"},
-        {id:2,name:"SAĞLIKLI"},
-        {id:3,name:"MARKETING"},
-        {id:4,name:"FRONT-END"}
-      ]
+      sectors: [
+        { id: 1, name: "HEALTY" },
+        { id: 2, name: "SAĞLIKLI" },
+        { id: 3, name: "MARKETING" },
+        { id: 4, name: "FRONT-END" },
+      ],
     };
   },
   methods: {
@@ -323,29 +335,38 @@ export default {
     var userData = JSON.parse(localStorage.getItem("user"));
     let userId = userData.id;
 
+    this.$store
+      .dispatch("getMentor", userId)
 
-    this.$store.dispatch("getMentor", userId)
+      .then((res) => {
+        console.log("Gelen mentor -------->:", res);
 
-    .then((res) => {
-      console.log("Gelen mentor -------->:", res);
-      
-      this.mentor.id = res.data.id;
-      this.mentor.isInvesment = res.data.isInvesment;
-      this.mentor.portfoyId = res.data.portfoyId;
-      this.mentor.isStatus = res.data.isStatus;
-      this.mentor.isSector = res.data.isSector;
-      this.mentor.destinationSectorId = res.data.destinationSectorId;
-      this.mentor.isInvestmentStep = res.data.isInvestmentStep;
-      this.mentor.investmentStepIds = res.data.investmentStepIds;
-      this.mentor.updatedAt = res.data.updatedAt;
-      this.mentor.createdAt = res.data.createdAt;
-
-      
-    });
-    
+        this.mentor.id = res.data.id;
+        this.mentor.isInvesment = res.data.isInvesment;
+        this.mentor.portfoyId = res.data.portfoyId;
+        this.mentor.isStatus = res.data.isStatus;
+        this.mentor.isSector = res.data.isSector;
+        this.mentor.destinationSectorId = res.data.destinationSectorId;
+        this.mentor.isInvestmentStep = res.data.isInvestmentStep;
+        this.mentor.investmentStepIds = res.data.investmentStepIds;
+        this.mentor.updatedAt = res.data.updatedAt;
+        this.mentor.createdAt = res.data.createdAt;
+      });
   },
   computed: {
     ...mapGetters(["getMentor"]),
+    saveEnabled() {
+      if (
+        this.mentor.portfoyId > 0 &&
+        this.mentor.destinationSectorId > 0 
+      ) {
+        console.log("this.profile.city-------->", this.mentor.portfoyId);
+        return false;
+      } else {
+        console.log(" true this.profile.city-------->:", this.mentor.destinationSectorId);
+        return true;
+      }
+    },
   },
 
   validations: {
@@ -355,6 +376,7 @@ export default {
       },
       portfoyId: {
         required,
+         between: between(1, 100000),
       },
       isStatus: {
         required,
@@ -364,6 +386,7 @@ export default {
       },
       destinationSectorId: {
         required,
+         between: between(1, 100000),
       },
       isInvestmentStep: {
         required,
