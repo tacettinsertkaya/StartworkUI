@@ -67,9 +67,12 @@
                    
                   </select>
                   <small
-                    v-if="saveButtonClicked && $v.investor.portfoyId.$error &&  !$v.investor.portfoyId.required"
+                    v-if="
+                    $v.investor.portfoyId.$error && 
+                     !$v.investor.portfoyId.required ||
+                     !$v.investor.portfoyId.between "
                     class="form-text text-danger mt-1"
-                  >Bu Alan Zorunludur..!</small>
+                  >Lütfen Bir Portföy Eklemek İçin Bir Alan Seçiniz..!</small>
                 </div>
               </div>
 
@@ -163,9 +166,11 @@
                   
                   </select>
                   <small
-                    v-if="saveButtonClicked && $v.investor.destinationSectorId.$error &&  !$v.investor.destinationSectorId.required"
+                    v-if=" $v.investor.destinationSectorId.$error && 
+                     !$v.investor.destinationSectorId.required" ||
+                      !$v.investor.destinationSectorId.between
                     class="form-text text-danger mt-1"
-                  >Bu Alan Zorunludur..!</small>
+                  >Lütfen Bir Odak Sektörü Seçiniz..!</small>
                 </div>
               </div>
 
@@ -240,7 +245,9 @@
               <hr style="margin-top: 20%;" />
               <div class="row">
                 <div class="col-md-3">
-                  <button type="submit" class="btn btn-success save" @click="saveInvestor">Kaydet</button>
+                  <button type="submit" class="btn btn-success save"
+                   :disabled="saveEnabled"
+                   @click="saveInvestor">Kaydet</button>
                 </div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3"></div>
@@ -258,7 +265,7 @@
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
 Vue.use(VueAlertify);
-import { required } from "vuelidate/lib/validators";
+import { required ,between} from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 
 export default {
@@ -349,6 +356,18 @@ export default {
   },
   computed: {
     ...mapGetters(["getInvestor"]),
+     saveEnabled() {
+      if (
+        this.investor.portfoyId > 0 &&
+        this.investor.destinationSectorId > 0 
+      ) {
+        console.log("this.investor.city-------->", this.investor.portfoyId);
+        return false;
+      } else {
+        console.log(" true this.investor.city-------->:", this.investor.destinationSectorId);
+        return true;
+      }
+    },
   },
 
   validations: {
@@ -358,6 +377,7 @@ export default {
       },
       portfoyId: {
         required,
+         between: between(1, 100000),
       },
       isStatus: {
         required,
@@ -367,6 +387,7 @@ export default {
       },
       destinationSectorId: {
         required,
+         between: between(1, 100000),
       },
       isInvestmentStep: {
         required,
