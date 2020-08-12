@@ -11,6 +11,7 @@ import Wizard from "@/components/pages/wizard/wizard";
 import Reports from "@/components/pages/reports/reports";
 import Settings from "@/components/pages/settings/settings";
 import Login from "@/components/pages/login/login";
+import Confirm from "@/components/pages/confirm-account/confirm-account";
 import Signup from "@/components/pages/signup/signup";
 import Profile from "@/components/pages/profile/profile";
 import Apply from "@/components/pages/apply/apply";
@@ -38,7 +39,11 @@ export default new Router({
       name: "signup",
       component: Signup
     },
-    // this.$store.getters.movies
+    {
+      path: "/confirm/:token",
+      name: "confirm",
+      component: Confirm
+    },
     {
       path: "/",
       component: Layout,
