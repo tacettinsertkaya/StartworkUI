@@ -12,17 +12,17 @@ import Reports from "@/components/pages/reports/reports";
 import Settings from "@/components/pages/settings/settings";
 import Login from "@/components/pages/login/login";
 import Signup from "@/components/pages/signup/signup";
-import Profile from "@/components/pages/profile/profile";
+import AccountProfile from "@/components/pages/profile/account-profile";
 import Apply from "@/components/pages/apply/apply";
 import Network from "@/components/pages/network/network";
 import Discussion from "@/components/pages/discussion/discussion";
 import Work from "@/components/pages/work/work";
 import Ecosystem from "@/components/pages/ecosystem/ecosystem";
 import Event from "@/components/pages/event/event";
-import AccountProfile from "@/components/pages/profile/account-profile";
-import AccountProfileHomepage from "@/components/pages/profile/account-profile-homepage";
-import PersonSetsInvestment from "@/components/pages/profile/person-sets-investment";
-import PersonSetsMentor from "@/components/pages/profile/person-sets-mentor";
+import ProfileSettings from "@/components/pages/profile/settings/profile-settings";
+import AccountSettingsHomepage from "@/components/pages/profile/settings/account-settings-homepage";
+import InvestmentSettings from "@/components/pages/profile/settings/investment-settings";
+import MentorSettings from "@/components/pages/profile/settings/mentor-settings";
 
 Vue.use(Router);
 
@@ -57,9 +57,9 @@ export default new Router({
           component: Dashboard
         },
         {
-          path: "profile",
-          name: "profile",
-          component: Profile
+          path: "account-profile",
+          name: "accountProfile",
+          component: AccountProfile
         },
         {
           path: "apply",
@@ -97,24 +97,24 @@ export default new Router({
           component: Settings
         },
         {
-          path: "/account",
-          name: "account",
-          component: AccountProfileHomepage,
+          path: "account-settings-homepage",
+          name: "accountSettingsHomepage",
+          component: AccountSettingsHomepage,
           children: [
             {
-              path: "profile",
+              path: "profile-settings",
               name: "profile",
-              component: AccountProfile
+              component: ProfileSettings
             },
             {
-              path: "investment",
+              path: "investment-settings",
               name: "investment",
-              component: PersonSetsInvestment
+              component: InvestmentSettings
             },
             {
-              path: "mentor",
+              path: "mentor-settings",
               name: "mentor",
-              component: PersonSetsMentor
+              component: MentorSettings
             }
           ]
         }

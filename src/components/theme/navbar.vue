@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar navbar-expand-lg navbar-light">
+  <div class="navbar navbar-expand-lg navbar-light fixed-top navbar-header">
     <button
       class="navbar-toggler"
       type="button"
@@ -62,11 +62,11 @@
           <img class="img-fluid" src="@/assets/images/10.png" alt />
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <router-link class="dropdown-item" to="/account/profile">Profil</router-link>
+          <router-link class="dropdown-item" to="/account-profile">Profil</router-link>
           <div class="dropdown-divider"></div>
           <router-link class="dropdown-item" to="company">Şirket</router-link>
           <div class="dropdown-divider"></div>
-          <router-link class="dropdown-item" to="settings">Ayarlar</router-link>
+          <router-link class="dropdown-item" to="/account-settings-homepage">Ayarlar</router-link>
           <div class="dropdown-divider"></div>
           <button @click="logout" type="button" class="dropdown-item">Çıkış Yap</button>
         </div>
@@ -88,3 +88,4 @@ export default {
   },
 };
 </script>
+

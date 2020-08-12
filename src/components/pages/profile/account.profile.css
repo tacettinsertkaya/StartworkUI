@@ -1,0 +1,97 @@
+
+.account-profile{
+    margin-top: 110px;
+}
+.top-part {
+    margin-top: 1%;
+    border: 1px sloid red;
+    background-color: yellow;
+    box-shadow: 1px 1px 1px 1px grey;
+    background-color: white;
+    padding-top: 1%;
+    padding-bottom: 0.5%;
+  }
+  
+  .picture-part img {
+    border-radius: 50%;
+    width: 60%;
+  }
+  
+  .top-part-informations{
+      color: black;
+      margin-top: 1%;
+  }
+  
+  .top-part-right{
+      margin-top: 1%;
+  }
+  
+  .top-part-right-under-part{
+      margin-top: 7%;
+  }
+  
+  .links{
+      margin-top: 1%;
+  }
+  .links a{
+      color: rgb(87, 80, 80);
+      font-weight: bold;
+  }
+  
+  .links a:hover{
+      color: blue;
+  } 
+  .links a:selection{
+      color: blue;
+  }
+  
+  .list-properties p{
+     border: 1px solid black;
+      border-radius: 5px;
+      padding: 2px 5px 2px 5px;
+      text-align: center;
+      background-color: blue;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+  }
+.about-part{
+    margin-top: 30px;
+    border: 1px solid rgb(207, 217, 218);
+    box-shadow: 1px 1px 1px 1px rgb(233, 227, 227);
+    padding-bottom: 1%;
+    text-align: left;
+}
+
+.about-part .about-title{
+    margin-top: 4%;
+    font-weight: bold;
+    
+}
+
+.under-part{
+    padding-top: 10%;
+}
+
+.mentor-title-part{
+    margin-top: 3%;
+    border: 1px sloid red;
+    background-color: yellow;
+    box-shadow: 1px 1px 1px 1px grey;
+    background-color: white;
+    padding-top: 1%;
+    padding-bottom: 0.5%;
+}
+
+.investment-title-part{
+    margin-top: 2%;
+    border: 1px sloid red;
+    background-color: yellow;
+    box-shadow: 1px 1px 1px 1px grey;
+    background-color: white;
+    padding-top: 1%;
+    padding-bottom: 0.5%;
+}
+  
+  
+  

@@ -54,7 +54,7 @@
                   class="list-group-item list-group-item-action"
                   id="list-home-list"
                   data-toggle="list"
-                  to="/account/profile"
+                  to="/account-settings-homepage/profile-settings"
                   role="tab"
                   aria-controls="home"
                 >Profil Ayarları</router-link>
@@ -63,7 +63,7 @@
                   class="list-group-item list-group-item-action"
                   id="list-profile-list"
                   data-toggle="list"
-                  to="/account/mentor"
+                  to="/account-settings-homepage/mentor-settings"
                   role="tab"
                   aria-controls="profile"
                 >Mentor Ayarları</router-link>
@@ -81,7 +81,7 @@
                   class="list-group-item list-group-item-action"
                   id="list-messages-list"
                   data-toggle="list"
-                  to="/account/investment"
+                  to="/account-settings-homepage/investment-settings"
                   role="tab"
                   aria-controls="profile"
                 >Yatırımcı Ayarları</router-link>
