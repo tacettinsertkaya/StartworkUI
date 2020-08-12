@@ -1,7 +1,6 @@
 import httpClient from "../services/httpClient";
 
 const API_URL = "http://localhost:4000/api/profile/";
-const API_MENTOR_URL = "http://localhost:4000/api/profile/";
 
 class ProfileService {
   registerProfile(profile) {
@@ -25,6 +24,7 @@ class ProfileService {
       skillId: profile.skillId,
       callingId: profile.callingId
     });
+    console.log("profile service profiles --->:", profile);
   }
 
   registerMentor(mentor) {
@@ -48,15 +48,6 @@ class ProfileService {
       .then(response => {
         console.log("profile-service getProfiles  --->:", response.data);
 
-        return response;
-      });
-  }
-
-  async getMentor() {
-    return await httpClient
-      .get(API_MENTOR_URL + "get-mentor")
-      .then(response => {
-        console.log("profile-mentor mentor  --->:", response.data);
         return response;
       });
   }
