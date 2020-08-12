@@ -278,7 +278,7 @@ export default {
         email: "",
         password: "",
       };
-
+      setTimeout(function () {}, 5000);
       this.$router.push({ name: "login" });
     },
   },

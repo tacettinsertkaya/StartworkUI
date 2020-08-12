@@ -4,7 +4,7 @@ export const state = {
   cities: [],
   universities: [],
   departments: [],
-  profiles: [],
+  profiles: []
 };
 
 const getters = {
@@ -22,8 +22,7 @@ const getters = {
 
   getProfiles(state) {
     return state.profiles;
-  },
- 
+  }
 };
 
 const mutations = {
@@ -43,8 +42,7 @@ const mutations = {
 
   saveRegister(state, profile) {
     state.profiles.push(profile);
-  },
-
+  }
 };
 
 export const actions = {
@@ -64,8 +62,6 @@ export const actions = {
     );
   },
 
- 
-
   async getCities({ commit }) {
     return await ProfileService.getCities().then(response => {
       let data = response.data;
@@ -81,8 +77,29 @@ export const actions = {
       let data = response.data;
       for (let key in data) {
         commit("updateUniversitiesList", data[key]);
-
       }
+      return response;
+    });
+  },
+
+  async getDepartments({ commit }) {
+    return await ProfileService.getDepartments().then(response => {
+      let data = response.data;
+      for (let key in data) {
+        commit("updateDepartmentsList", data[key]);
+      }
+      return response;
+    });
+  },
+
+  async getProfiles({ commit }, userId) {
+    return await ProfileService.getProfiles(userId).then(response => {
+      let data = response.data;
+      for (let key in data) {
+        commit("updateProfilesList", data[key]);
+      }
+
+      console.log("profile getProfiles --->:", data);
       return response;
     });
   },
@@ -101,7 +118,6 @@ export const actions = {
       let data = response.data;
       for (let key in data) {
         commit("updateProfilesList", data[key]);
-
       }
 
       console.log("profile getProfiles --->:", data);
@@ -137,9 +153,7 @@ export const actions = {
       }
       return response;
     });
-  },
-
- 
+  }
 };
 
 export default {
