@@ -68,8 +68,6 @@ export const mutations = {
 };
 
 export const actions = {
-  
-
   login({ commit }, user) {
     return AuthService.login(user).then(
       response => {
@@ -78,6 +76,17 @@ export const actions = {
       },
       error => {
         commit("loginFailure");
+        return Promise.reject(error);
+      }
+    );
+  },
+
+  confirmAccount({ commit }, token) {
+    return AuthService.confirmAccount(token).then(
+      response => {
+        return response.data;
+      },
+      error => {
         return Promise.reject(error);
       }
     );

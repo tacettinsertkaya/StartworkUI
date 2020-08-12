@@ -10,19 +10,19 @@ class AuthService {
         password: user.password
       })
       .then(response => {
-
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
-     
-         
-         
+
           let user = JSON.stringify(response.data);
           localStorage.setItem("user", user);
-         
         }
-        
+
         return response;
       });
+  }
+
+  confirmAccount(token) {
+    return httpClient.get(API_URL + "email/verify/" + token);
   }
 
   logout() {
