@@ -260,7 +260,6 @@ export default {
       }
       this.$store.dispatch("register", { ...this.user }).then(
         (result) => {
-          console.log("save User -----> : ", result.data);
           this.$alertify.alertWithTitle("E-posta Bilgisi", result.data, () =>
             this.$alertify.success("Kayıt işlemi başarılı")
           );
@@ -272,17 +271,12 @@ export default {
         }
       );
 
-      this.user = {
-        name: "",
-        username: "",
-        email: "",
-        password: "",
-      };
-      // setTimeout(function () {}, 5000);
-      // this.$router.push({ name: "login" });
+    
       setTimeout(() => {
+
         this.$router.push({ name: "login" });
-      }, 5000);
+      }, 2000);
+
     },
   },
   computed: {
@@ -331,3 +325,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@import "../../../assets/loading.css"
+</style>

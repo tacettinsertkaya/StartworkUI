@@ -84,7 +84,9 @@ export const actions = {
   confirmAccount({ commit }, token) {
     return AuthService.confirmAccount(token).then(
       response => {
-        return response.data;
+        console.log("ConfirmAccount rressss----->:",response);
+        return response;
+       
       },
       error => {
         return Promise.reject(error);
