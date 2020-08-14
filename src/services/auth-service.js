@@ -22,7 +22,10 @@ class AuthService {
   }
 
   confirmAccount(token) {
-    return httpClient.get(API_URL + "email/verify/" + token);
+    return httpClient.get(API_URL + "email/verify/" + token)
+    .then(response=>{
+      return response
+    })
   }
 
   logout() {

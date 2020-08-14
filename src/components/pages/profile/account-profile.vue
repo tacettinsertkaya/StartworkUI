@@ -1,321 +1,423 @@
-<template>
-  <div class="container home">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="row homepage">
-          <div class="col-md-12 left-part">
-            <div class="col form-home">
-              <h3 class="left-part-title">Profil</h3>
-              <p class="left-part-altTitle">Profil Bilgilerini Gir</p>
-              <hr style="width:105%;" />
+<template >
+  <div class="container-fluid account-profile">
+    <div class="container-fluid top-part">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="text-center picture-part">
+            <img src="../../../assets/images/pp.jpg" class="picture" alt="..." />
+          </div>
+        </div>
+        <div class="col-md-4 top-part-informations">
+          <h5>Startup Name</h5>
+          <p class="mb-1">@startupid</p>
+          <br />
+
+          <div class="row list-properties">
+            <div class="col-md-4">
+              <p>INVESTOR</p>
             </div>
-            <form class="form" @submit.prevent="saveProfile">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputName">ADI SOYADI</label>
-                  <input
-                    @blur="$v.profile.nameSurname"
-                    type="name"
-                    class="form-control"
-                    id="inputName"
-                    v-model="profile.nameSurname"
-                    placeholder="Ad ve Soyad"
-                  />
-                  <small
-                    v-if=" $v.profile.nameSurname.$error &&  !$v.profile.nameSurname.required"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Ad Ve Soyad Alanı Zorunludur..!</small>
-                </div>
+            <div class="col-md-4">
+              <p class="list">MENTOR</p>
+            </div>
+            <div class="col-md-4">
+              <p class="list">ENTREPRENEUR</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-3 top-part-right">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-4">
+                <button type="button" class="btn btn-primary btn-sm">Mesaj</button>
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-primary btn-sm">Takip</button>
+              </div>
+              <div class="col-2"></div>
+              <div class="col-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="coninter links">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-2">
+                <a href="/home#/account-profile" class="stretched-link">Timeline</a>
+              </div>
+              <div class="col-md-2">
+                <a href="/home#/account-profile" class="stretched-link">Hakkında</a>
+              </div>
+              <div class="col-md-3">
+                <a href="/home#/account-profile" class="stretched-link">Sosyal 580</a>
+              </div>
+              <div class="col-md-2">
+                <a href="/home#/account-profile" class="stretched-link">İşler</a>
+              </div>
+              <div class="col-md-2">
+                <a href="/home#/account-profile" class="stretched-link">Finansman</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container about-part">
+      <div class="row">
+        <div class="col-md-12">
+          <h6 class="about-title">Hakkında</h6>
+          <hr style="width: 102%;margin-left: -1%;" />
+        </div>
 
-                <div class="form-group col-md-6">
-                  <label for="inputPassword">ÜYELİK TARİHİ</label>
-                  <input
-                    disabled
-                    type="text"
-                    class="form-control"
-                    id="inputCalender"
-                    v-model="profile.membershipDate"
-                    placeholder="Tarih Giriniz"
-                  />
+        <div class="container social-accounts">
+          <div class="row">
+            <div class="col-md-3">
+              <i class="far fa-comment" style="font-size:24px;margin-left:10px"></i>
+              deneme@gmail.com
+            </div>
+
+            <div class="col-md-3">
+              <i class="fas fa-map-marker-alt" style="font-size:24px;margin-right:10px"></i>İstabul , Turkey
+            </div>
+            <div class="col-md-3">
+              <i class="far fa-user" style="font-size:24px;margin-right: 10px;"></i>
+              username
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+        </div>
+        <div class="container biyografi-part">
+          <div class="row">
+            <div class="col-md-12">
+              <h6 style="margin-top: 2%;color: rgb(142, 180, 180);">BIYOGRAFI</h6>
+              <p>Ben bir biyografi yazisi yazmak için yapıyorum</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container skills-part">
+          <div class="row list-properties">
+            <div class="col-md-6">
+              <h6 class="skills-title-part">YETENEKLER</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <p class="list">INVESTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">MENTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">ENTREPRENEUR</p>
                 </div>
               </div>
-              <div class="form-row">
-                <div class="col-md-6 mb-3">
-                  <label for="validationServerUsername">KULLANICI ADI</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupPrepend3">@</span>
+            </div>
+          </div>
+        </div>
+        <div class="container mentor-part">
+          <div class="row list-properties">
+            <div class="col-md-6">
+              <h6 class="mentor-title-part">MENTOR ODAK SEKTÖR</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <p>INVESTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p>MENTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p>ENTREPRENEUR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container investmentpart">
+          <div class="row list-properties">
+            <div class="col-md-6">
+              <h6 class="investment-title-part">YATIRIM ODAK SEKTÖR</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <p class="list">INVESTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">MENTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">ENTREPRENEUR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container program-type">
+          <div class="row list-properties">
+            <div class="col-md-6">
+              <h6 class="program-title-type">PROGRAM TÜRÜ</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <p class="list">INVESTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">MENTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">ENTREPRENEUR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container investment-stage">
+          <div class="row list-properties">
+            <div class="col-md-6">
+              <h6 class="investment-title-stage">YATIRIM AŞAMASI</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <p class="list">INVESTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">MENTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">ENTREPRENEUR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container calling">
+          <div class="row list-properties">
+            <div class="col-md-6">
+              <h6 class="calling-title">ARIYOR</h6>
+              <div class="row">
+                <div class="col-md-4">
+                  <p class="list">INVESTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">MENTOR</p>
+                </div>
+                <div class="col-md-4">
+                  <p :class="list">ENTREPRENEUR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container under-part">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-4">
+                  <img
+                    src="../../../assets/images/pp.jpg"
+                    alt="JR"
+                    class="rounded-circle"
+                    style="width: 100%;"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-5 list-properties">
+                      <p class="list" style="font-size: 10px;margin-bottom:5px">FOUNDER</p>
                     </div>
-                    <!-- input içindeki class içine  is-valid -->
-                    <input
-                      @blur="$v.profile.username"
-                      type="text"
-                      class="form-control"
-                      id="validationServerUsername"
-                      v-model="profile.username"
-                      placeholder="Kullanıcı Adınızı Giriniz"
-                      aria-describedby="inputGroupPrepend3"
-                      required
-                    />
-                    <br />
-                    <br />
-                    <small
-                      v-if=" $v.profile.username.$error &&  !$v.profile.username.required"
-                      class="form-text text-danger mt-1"
-                      style="margin-left:30%"
-                    >Lütfen Bir Kullanıcı Adı Giriniz!...!</small>
-
-                    <div class="invalid-feedback">Lütfen Bir Kullanıcı Adı Giriniz!.</div>
+                    <div class="col-md-7">
+                      <div class="row">
+                        <div class="col-md-1" style="font-size:17px">of</div>
+                        <div class="col-md-9">
+                          <h6 style="font-weight: bold;font-size:17px">Startwork</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div
+                      class="col-md-6"
+                      style="color: rgb(182, 195, 207);margin-right: -30px;font-size: 15px;"
+                    >
+                      <p style="margin-top:10px">Daha Önce :</p>
+                    </div>
+                    <div
+                      class="col-md-6"
+                      style="color: rgb(182, 195, 207);margin-right: -30px;font-size: 15px;"
+                    >
+                      <p style="font-size: 17px;margin-top:10px">Lambo And BMW</p>
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">ŞEHİR</label>
-
-                  <select class="custom-select" v-model="profile.city">
-                    <option value="0">Şehir Seçiniz</option>
-                    <option
-                      :value="city.id"
-                      :key="'city'+index"
-                      v-for="(city,index) in getCities"
-                    >{{city.name}}</option>
-                  </select>
-
-                  <small
-                    v-if=" $v.profile.city.$error &&  !$v.profile.city.required || !$v.profile.city.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Bir Şehir Seçiniz..!</small>
-                  <div class="invalid-feedback">Lütfen Bir Şehir Seçiniz!</div>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">ÜLKE</label>
-                  <select class="custom-select" required v-model="profile.countryId">
-                    <option value="0">Ülke Seçiniz</option>
-                    <option
-                      :value="country.id"
-                      :key="'country'+index"
-                      v-for="(country,index) in countries"
-                    >{{country.name}}</option>
-                  </select>
-                  <small
-                    v-if=" $v.profile.countryId.$error &&  !$v.profile.countryId.required || !$v.profile.countryId.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Bir Ülke Seçiniz..!</small>
-                  <div class="invalid-feedback">Lütfen Bir Ülke Seçiniz!</div>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">E POSTA</label>
-                  <input
-                    disabled
-                    type="email"
-                    class="form-control"
-                    id="inputEmail4"
-                    v-model="profile.email"
-                    placeholder="E-postanızı Giriniz"
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+        <div class="container under-part">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-4">
+                  <img
+                    src="../../../assets/images/pp.jpg"
+                    alt="JR"
+                    class="rounded-circle"
+                    style="width: 100%;"
                   />
                 </div>
-
-                <div class="form-group col-md-6">
-                  <label for="inputWebsite">WEBSİTE</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputWebsite"
-                    v-model="profile.website"
-                    placeholder="Web sitenizi Giriniz"
-                  />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputLinkedin">LİNKEDİN</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputLinkedin"
-                    v-model="profile.linkedin"
-                    placeholder="Linkedin Giriniz"
-                  />
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="inputTwitter">TWİTTER</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="inputTwitter"
-                    v-model="profile.twitter"
-                    placeholder="Twitteri Giriniz"
-                  />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">BÖLÜM</label>
-                  <select class="custom-select" required v-model="profile.department">
-                    <option value="0">Bölüm Seçiniz</option>
-
-                    <option
-                      :value="department.id"
-                      :key="'department' +index"
-                      v-for="(department , index) in   newDepartments == 0 ? departments:newDepartments"
-                    >{{department.name}}</option>
-                  </select>
-                  <small
-                    v-if=" $v.profile.department.$error &&  !$v.profile.department.required || !$v.profile.department.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Bir Bölüm Seçiniz..!</small>
-                  <div class="invalid-feedback">Example invalid custom select feedback</div>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">OKUL</label>
-                  <select
-                    class="custom-select"
-                    required
-                    v-model="profile.university"
-                    @change="universitySelected"
-                  >
-                    <option value="0">Okul Seçiniz</option>
-                    <option
-                      :value="university.id"
-                      :key="'university'+index"
-                      v-for="(university,index) in getUniversities"
-                    >{{university.name}}</option>
-                  </select>
-                  <small
-                    v-if=" $v.profile.university.$error &&  !$v.profile.university.required || !$v.profile.university.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Bir Okul Seçiniz..!</small>
-                  <div class="invalid-feedback">Lütfen Bir Okul Seçiniz</div>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">DENEYİM VEYA POZİSYON</label>
-                  <select class="custom-select" required v-model="profile.experienceId">
-                    <option value="0">Deneyim Veya Pozisyonu Seçiniz</option>
-                    <option
-                      :value="experience.id"
-                      :key="'experience'+index"
-                      v-for="(experience,index) in experiences"
-                    >{{experience.name}}</option>
-                  </select>
-                  <small
-                    v-if=" $v.profile.experienceId.$error &&  !$v.profile.experienceId.required || !$v.profile.experienceId.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Deneyeim Ve Pozisyonu Seçiniz..!</small>
-                  <div class="invalid-feedback">Lütfen Deneyeim Ve Pozisyonu Seçiniz</div>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">ŞİRKET VEYA STARTUP</label>
-                  <select class="custom-select" required v-model="profile.companyId">
-                    <option value="0">Şirket Veya Startup Seçiniz</option>
-                    <option
-                      :value="company.id"
-                      :key="'company'+index"
-                      v-for="(company,index) in companies"
-                    >{{company.name}}</option>
-                  </select>
-                  <small
-                    v-if=" $v.profile.companyId.$error &&  !$v.profile.companyId.required || !$v.profile.companyId.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Bir Şirket Veya Startup Seçiniz..!</small>
-                  <div class="invalid-feedback">Lütfen Bir Şirket Veya Startup Seçiniz</div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="biyografi">BİYOGRAFİ</label>
-                <textarea
-                  class="form-control"
-                  id="biyografi"
-                  rows="3"
-                  v-model="profile.biography"
-                  placeholder="Hakkında ..."
-                ></textarea>
-              </div>
-
-              <div class="form-group">
-                <p
-                  class="profile-etiketi"
-                >PROFİL ETİKETİ (SİZE UYGUN PROFİL TİPİ VARSA İŞARETLEYİNİZ)</p>
-
-                <div class="col form-check-groups">
-                  <div class="form-check" v-for="(i,index) in tags" :key="'t'+index">
-                    <input
-                      type="checkbox"
-                      class="form-check-input"
-                      v-model="profile.profileTags"
-                      :value="i.name"
-                    />
-
-                    <label class="form-check-label" for>{{i.name}}</label>
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-5 list-properties">
+                      <p class="list" style="font-size: 10px;margin-bottom:5px">DEVELOPER</p>
+                    </div>
+                    <div class="col-md-7">
+                      <div class="row">
+                        <div class="col-md-1" style="font-size:17px">of</div>
+                        <div class="col-md-9">
+                          <h6 style="font-weight: bold;">Startwork</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div
+                      class="col-md-6"
+                      style="color: rgb(182, 195, 207);margin-right: -30px;font-size: 15px;"
+                    >
+                      <p style="margin-top:5px">Daha Önce :</p>
+                    </div>
+                    <div
+                      class="col-md-6"
+                      style="color: rgb(182, 195, 207);margin-right: -30px;font-size: 15px;"
+                    >
+                      <p
+                        style="color: rgb(182, 195, 207);margin-right: -30px;font-size: 15px;"
+                      >Lambo And BMW</p>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">YETENEKLER</label>
-                  <select class="custom-select" required v-model="profile.skillId">
-                    <option value="0">Yetenekler Yazınız</option>
-                    <option
-                      :value="skill.id"
-                      :key="'skills'+index"
-                      v-for="(skill,index) in skills"
-                    >{{skill.name}}</option>
-                  </select>
-                  <small
-                    v-if="this.saveButtonClicked && $v.profile.skillId.$error &&  !$v.profile.skillId.required || !$v.profile.skillId.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Bir Yeteneğini Seçiniz..!</small>
-                  <div class="invalid-feedback">Lütfen Bir Yeteneğini Seçiniz</div>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="validationServerUsername">ARIYOR</label>
-                  <select class="custom-select" required v-model="profile.callingId">
-                    <option value="0">Yazınız</option>
-                    <option
-                      :value="call.id"
-                      :key="'calling'+index"
-                      v-for="(call,index) in calling"
-                    >{{call.name}}</option>
-                  </select>
-                  <small
-                    v-if=" $v.profile.callingId.$error &&  !$v.profile.callingId.required || !$v.profile.callingId.between"
-                    class="form-text text-danger mt-1"
-                  >Lütfen Bir Yeteneğini Seçiniz..!</small>
-                  <div class="invalid-feedback">Lütfen Aradığınız Seçiniz</div>
-                </div>
-              </div>
-
-              <hr style="margin-top:10%;width:103%" />
-
+    <div class="container mentor-area">
+      <div class="row">
+        <div class="col-md-12">
+          <h6 class="mentor-area-title">Mentörlük</h6>
+          <hr style="width: 102%;margin-left: -1%;" />
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
               <div class="row">
                 <div class="col-md-3">
-                  <button
-                    type="submit"
-                    class="btn btn-success save"
-                    :disabled="saveEnabled"
-                    @click="saveProfile"
-                  >Kaydet</button>
+                  <img
+                    src="../../../assets/images/pp.jpg"
+                    class="rounded-circle"
+                    style="width: 60%;"
+                    alt="..."
+                  />
                 </div>
-                <div class="col-md-3"></div>
-                <div class="col-md-3"></div>
-                <div class="col-md-3"></div>
+                <div class="col-md-7" style="margin-left: -20px;">
+                  <h6 style="font-weight:bold">Hernon Howard</h6>
+                  <p style="color: rgb(74, 79, 83); margin-top: 0px;">Product Designer at Dribble</p>
+                  <p
+                    style="color: rgb(74, 79, 83);margin-top: 0px;font-size: 15px;"
+                  >Katherine allen and 12 other mutual friends</p>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary btn-sm" style="margin-top: 15%;">Takip</button>
+                </div>
               </div>
-            </form>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-3">
+                  <img
+                    src="../../../assets/images/pp.jpg"
+                    class="rounded-circle"
+                    style="width: 60%;"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-md-7" style="margin-left: -20px;">
+                  <h6 style="font-weight:bold">Hernon Howard</h6>
+                  <p style="color: rgb(74, 79, 83); margin-top: -5px;">Product Designer at Dribble</p>
+                  <p
+                    style="color: rgb(74, 79, 83);margin-top: 5px;font-size: 15px;"
+                  >Katherine allen and 12 other mutual friends</p>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary btn-sm" style="margin-top: 15%;">Takip</button>
+                </div>
+              </div>
+            </div>
+            <hr style="width: 102%;margin-left: 0%;" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container investment-title-part">
+      <div class="row">
+        <div class="col-md-12">
+          <h6>Yatırımlar</h6>
+          <hr style="width: 102%;margin-left: -1%;" />
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-3">
+                  <img
+                    src="../../../assets/images/pp.jpg"
+                    class="rounded-circle"
+                    style="width: 60%;"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-md-7" style="margin-left: -20px;">
+                  <h6>Hernon Howard</h6>
+                  <p style="color: rgb(74, 79, 83); margin-top: -5px;">Product Designer at Dribble</p>
+                  <p
+                    style="color: rgb(74, 79, 83);margin-top: -17px;font-size: 15px;"
+                  >Katherine allen and 12 other mutual friends</p>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary btn-sm" style="margin-top: 15%;">Takip</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-3">
+                  <img
+                    src="../../../assets/images/pp.jpg"
+                    class="rounded-circle"
+                    style="width: 60%;"
+                    alt="..."
+                  />
+                </div>
+                <div class="col-md-7" style="margin-left: -20px;">
+                  <h6>Hernon Howard</h6>
+                  <p style="color: rgb(74, 79, 83); margin-top: -5px;">Product Designer at Dribble</p>
+                  <p
+                    style="color: rgb(74, 79, 83);margin-top: -17px;font-size: 15px;"
+                  >Katherine allen and 12 other mutual friends</p>
+                </div>
+                <div class="col-md-2">
+                  <button class="btn btn-primary btn-sm" style="margin-top: 15%;">Takip</button>
+                </div>
+              </div>
+            </div>
+            <hr style="width: 102%;margin-left: 0%;" />
           </div>
         </div>
       </div>
@@ -324,301 +426,202 @@
 </template>
 
 <script>
-import Vue from "vue";
-import VueAlertify from "vue-alertify";
-Vue.use(VueAlertify);
-import { required, between, numeric } from "vuelidate/lib/validators";
-import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       profile: {
-        id: "",
         nameSurname: "",
-        membershipDate: "",
         username: "",
-        countryId: "",
         city: "",
+        country: "",
         email: "",
         website: "",
         linkedin: "",
         twitter: "",
-        university: "",
         department: "",
-        experienceId: "",
-        companyId: "",
+        school: "",
+        experience: "",
+        company: "",
         biography: "",
-        profileTags: [],
-        skillId: "",
-        callingId: "",
-        updatedAt: new Date(),
+        createdAt: "",
+        updatedAt: "",
       },
-      saveButtonClicked: false,
-      universities: [],
-      newDepartments: [],
-      departments: [],
-      tags: [
-        { id: 1, name: "girisimci" },
-        { id: 2, name: "mentor" },
-        { id: 3, name: "yatirimci" },
-      ],
-      countries: [{ id: 1, name: "Türkiye" }],
-      experiences: [{ id: 1, name: "FOUNDER" }],
-      skills: [
-        { id: 1, name: "HEALTY" },
-        { id: 2, name: "SAĞLIK" },
-        { id: 3, name: "MARKETING" },
-        { id: 4, name: "FRONT-END" },
-      ],
-
-      calling: [
-        { id: 1, name: "HEALTY" },
-        { id: 2, name: "SAĞLIK" },
-        { id: 3, name: "MARKETING" },
-        { id: 4, name: "FRONT-END" },
-      ],
-
-      companies: [{ id: 1, name: "STARTWORK" }],
     };
   },
   methods: {
-    saveProfile() {
-      this.saveButtonClicked = true;
-      this.$v.$touch();
-      /*
-      if (this.$v.$invalid) {
-        console.log("frnrrrr--->:",this.$v.$invalid);
-        return;
-      }
-      */
-
-      console.log("save profile register bilgiler --->", { ...this.profile });
-
-      this.$store.dispatch("registerProfile", { ...this.profile }).then(
-        (result) => {
-          this.$alertify.alertWithTitle("Kayıt Bilgisi", result.data, () =>
-            this.$alertify.success("Profil Kayıt işlemi başarılı")
-          );
-        },
-        (error) => {
-          this.$alertify.alertWithTitle("Kayıt Bilgisi", error, () =>
-            this.$alertify.error("Kayıt işlemi başarısız")
-          );
-        }
-      );
-    },
-
-    universitySelected() {
-      this.newDepartments = this.departments.filter(
-        (p) => p.uni_id == this.profile.university
-      );
-    },
-  },
-  created() {
-    var userData = JSON.parse(localStorage.getItem("user"));
-    let userId = userData.id;
-
-    this.$store.dispatch("getUniversities");
-
-    this.$store.dispatch("getCities").then((res) => {});
-    this.$store.dispatch("getDepartments").then((res) => {
-      this.departments = res.data;
-    });
-
-    this.$store.dispatch("getProfiles", userId).then((res) => {
-      this.profile.id = res.data.id;
-      this.profile.nameSurname = res.data.nameSurname;
-      this.profile.membershipDate = res.data.createdAt;
-      this.profile.username = res.data.username;
-      this.profile.city = res.data.city == null ? 0 : res.data.city.id;
-      this.profile.countryId = res.data.countryId;
-      this.profile.email = res.data.email;
-      this.profile.website = res.data.website;
-      this.profile.linkedin = res.data.linkedin;
-      this.profile.twitter = res.data.twitter;
-      this.profile.university =
-        res.data.university == null ? 0 : res.data.university.id;
-      this.profile.department =
-        res.data.department == null ? 0 : res.data.department.id;
-      this.profile.experienceId = res.data.experienceId;
-      this.profile.companyId = res.data.companyId;
-      this.profile.biography = res.data.biography;
-      this.profile.profileTags = res.data.profileTags;
-      this.profile.skillId = res.data.skillId;
-      this.profile.callingId = res.data.callingId;
-    });
-  },
-  computed: {
-    ...mapGetters([
-      "getCities",
-      "getUniversities",
-      "getDepartments",
-      "getProfiles",
-    ]),
-    saveEnabled() {
-      if (
-        this.profile.city > 0 &&
-        this.profile.countryId > 0 &&
-        this.profile.nameSurname.length > 0 &&
-        this.profile.university > 0 &&
-        this.profile.department > 0 &&
-        this.profile.experienceId > 0 &&
-        this.profile.companyId > 0 &&
-        this.profile.skillId > 0 &&
-        this.profile.callingId > 0
-      ) {
-        console.log("this.profile.city-------->", this.profile.city > 0);
-        return false;
-      } else {
-        console.log(" true this.profile.city-------->", this.profile.city);
-        return true;
-      }
-    },
-  },
-
-  validations: {
-    profile: {
-      nameSurname: {
-        required,
-      },
-      username: {
-        required,
-      },
-      countryId: {
-        required,
-        between: between(1, 81),
-      },
-      city: {
-        required,
-        between: between(1, 81),
-      },
-      website: {
-        required,
-      },
-      linkedin: {
-        required,
-      },
-      twitter: {
-        required,
-      },
-      university: {
-        required,
-        between: between(1, 100000),
-      },
-      department: {
-        required,
-        between: between(1, 100000),
-      },
-      experienceId: {
-        required,
-        between: between(1, 100000),
-      },
-      companyId: {
-        required,
-        between: between(1, 100000),
-      },
-      biography: {
-        required,
-      },
-      profileTags: {
-        required,
-      },
-      skillId: {
-        required,
-        between: between(1, 100000),
-      },
-      callingId: {
-        required,
-        between: between(1, 100000),
-      },
+    getLoginProfile(loginProfile) {
+      profile.email = loginProfile.email;
+      profile.createdAt = loginProfile.createdAt;
+      profile.nameSurname = loginProfile.nameSurname;
     },
   },
 };
+
+//@import './account.profile.css';
 </script>
 <style scoped>
-.home {
-  margin-bottom: 10px;
+.account-profile {
+  margin-top: 110px;
 }
-.box {
-  margin-top: 20px;
-  width: 100%;
-  border: 5px solid white;
-  padding: 10px;
-  box-shadow: 2px 2px 2px 2px grey;
+.top-part {
+  margin-top: 1%;
+  border: 1px sloid red;
+  background-color: yellow;
+  box-shadow: 1px 1px 1px 1px grey;
   background-color: white;
-  margin-left: 0px;
-}
-.style {
-  font-weight: bold;
-  font-size: 20px;
-}
-.profile-completeness {
-  font-size: 18px;
+  padding-top: 1%;
+  padding-bottom: 0.5%;
 }
 
-.healthbar {
-  width: 70%;
-  height: 20px;
-  background-color: #eee;
-  margin: auto;
-  transition: width 500ms;
+.picture-part img {
+  border-radius: 50%;
+  width: 60%;
 }
 
-.homepage {
-  margin-top: 2%;
-  margin-bottom: 10px;
+.top-part-informations {
+  color: black;
+  margin-top: 1%;
 }
 
-.left-part {
-  background-color: white;
-  border: 1px solid rgb(238, 226, 226);
-  padding: 20px 20px 20px 20px;
-  margin-left: 10px;
+.top-part-right {
+  margin-top: 1%;
 }
-.left-part-title {
-  text-align: left;
+
+.top-part-right-under-part {
+  margin-top: 7%;
+}
+
+.links {
+  margin-top: 1%;
+}
+.links a {
+  color: rgb(87, 80, 80);
   font-weight: bold;
 }
-.left-part-altTitle {
-  text-align: left;
-  margin-top: 7px;
+
+.links a:hover {
+  color: blue;
+}
+a:active {
+  color: blue;
 }
 
-.form {
-  color: black;
-}
-
-.card-header-details {
-  font-weight: 600;
-  text-align: left;
-  color: rgb(212, 212, 207);
-}
-
-label {
-  text-align: left;
-  color: rgb(159, 167, 158);
-  margin-inline-start: 10px;
-}
-
-.profile-etiketi {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-.form-check-groups {
-  text-align: left;
-  margin-bottom: 5%;
-}
-.form-check-label {
-  margin-left: 10px;
-  text-align: left;
-  color: black;
-  font-size: 18px;
-}
-
-.save {
-  margin-top: 20px;
+.list-properties p {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 2px 5px 2px 5px;
   text-align: center;
-  width: 80%;
+  background-color: blue;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+}
+.about-part {
+  margin-top: 30px;
+  border: 1px solid rgb(207, 217, 218);
+  box-shadow: 1px 1px 1px 1px rgb(233, 227, 227);
+  padding-bottom: 1%;
+  text-align: left;
+}
+
+.about-part .about-title {
+  margin-top: 4%;
+  font-weight: bold;
+}
+
+.social-accounts {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.biyografi-part {
+  margin-top: 1%;
+  margin-bottom: 3%;
+}
+
+.skills-part {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+.skills-title-part {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: rgb(142, 180, 180);
+}
+
+.mentor-part {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+.mentor-title-part {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: rgb(142, 180, 180);
+}
+
+.investment-part {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+.investment-title-part {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: rgb(142, 180, 180);
+}
+
+.program-type {
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+.program-title-type {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: rgb(142, 180, 180);
+}
+
+.investment-stage {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.investment-title-stage {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: rgb(142, 180, 180);
+}
+
+.calling {
+  margin-top: 1%;
+  margin-bottom: 10%;
+}
+.calling-title {
+  margin-top: 1%;
+  margin-bottom: 2%;
+  color: rgb(142, 180, 180);
+}
+
+.under-part {
+  padding-top: 1%;
+}
+
+.mentor-area {
+  margin-top: 2%;
+  border: 1px sloid red;
+  background-color: yellow;
+  box-shadow: 1px 1px 1px 1px grey;
+  background-color: white;
+  padding-top: 1%;
+  padding-bottom: 0.5%;
+}
+
+.mentor-area-title{
+    text-align: left;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top:10px;
+    font-size:20px;
 }
 </style>
