@@ -278,8 +278,11 @@ export default {
         email: "",
         password: "",
       };
-      setTimeout(function () {}, 5000);
-      this.$router.push({ name: "login" });
+      // setTimeout(function () {}, 5000);
+      // this.$router.push({ name: "login" });
+      setTimeout(() => {
+        this.$router.push({ name: "login" });
+      }, 5000);
     },
   },
   computed: {
