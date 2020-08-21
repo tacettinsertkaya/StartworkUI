@@ -1,6 +1,7 @@
 import httpClient from "../services/httpClient";
 
-const API_MENTOR_URL = "http://localhost:4000/api/mentor/";
+//const API_MENTOR_URL = "http://localhost:4000/api/mentor/";
+const API_MENTOR_URL = "http:/API.tsertkaya.com/api/mentor/";
 
 class MentorService {
  

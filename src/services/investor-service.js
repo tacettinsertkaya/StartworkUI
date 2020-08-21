@@ -1,6 +1,7 @@
 import httpClient from "../services/httpClient";
 
-const API_INVESTOR_URL = "http://localhost:4000/api/investor/";
+//const API_INVESTOR_URL = "http://localhost:4000/api/investor/";
+const API_INVESTOR_URL = "http://API.tsertkaya.com/api/investor/";
 
 class InvestorService {
  

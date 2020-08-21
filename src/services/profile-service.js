@@ -1,6 +1,8 @@
 import httpClient from "../services/httpClient";
 
-const API_URL = "http://localhost:4000/api/profile/";
+//const API_URL = "http://localhost:4000/api/profile/";
+
+const API_URL = "http://API.tsertkaya.com/api/profile/";
 
 class ProfileService {
   registerProfile(profile) {

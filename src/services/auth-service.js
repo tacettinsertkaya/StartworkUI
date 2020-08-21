@@ -1,6 +1,7 @@
 import httpClient from "../services/httpClient";
 
-const API_URL = "http://localhost:4000/api/auth/";
+//const API_URL = "http://localhost:4000/api/auth/";
+const API_URL = "http://API.tsertkaya.com/api/auth/";
 
 class AuthService {
   login(user) {
